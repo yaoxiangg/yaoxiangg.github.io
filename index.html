@@ -36,11 +36,27 @@
         var planeColor = 0x80cbc4;
         var cubeGaps = 1.1;
 
-        var imagey_grid = [[0,0,0,0x68507b],[0,1,0,0x68507b],[0,2,0,0x68507b],[0,3,0,0x68507b],[0,4,0,0x68507b],[0,5,0,0x68507b],[0,6,0,0x68507b],[0,7,0,0x68507b],[0,8,0,0x68507b],[0,9,0,0x68507b],[0,10,0,0x61c6f6]];
+        var imagey_grid = [];
+        var imagex_grid = [];
+        var imagez_grid = [];
 
-        var imagex_grid = [[0,0,0,0xdd6780],[1,0,0,0xdd6780],[2,0,0,0xdd6780],[3,0,0,0xdd6780],[4,0,0,0xdd6780],[5,0,0,0xdd6780],[6,0,0,0xdd6780],[7,0,0,0xdd6780],[8,0,0,0xdd6780],[9,0,0,0xdd6780],[10,0,0,0xdd6780]];
+        var random_color_1 = Math.floor(Math.random()*16777215);
+        var random_color_2 = Math.floor(Math.random()*16777215);
+        var random_color_3 = Math.floor(Math.random()*16777215);
+        var random_color_4 = Math.floor(Math.random()*16777215);
+        var random_color_5 = Math.floor(Math.random()*16777215);
 
-        var imagez_grid = [[0,0,0,0x777ed2],[0,0,1,0x777ed2],[0,0,2,0x777ed2],[0,0,3,0x777ed2],[0,0,4,0x777ed2],[0,0,5,0x777ed2],[0,0,6,0x777ed2],[0,0,7,0x777ed2],[0,0,8,0x777ed2],[0,0,9,0x777ed2],[0,0,10,0x777ed2],[0,1,10,0x777ed2],[0,1,9,0x777ed2],[0,1,8,0x777ed2],[0,1,7,0x777ed2],[0,1,6,0x777ed2],[0,1,5,0x777ed2],[0,1,4,0x777ed2],[0,1,3,0x777ed2]];
+        for (var x = 0; x < 10; x++) {
+            for (var y = 0; y < 10; y++) {
+                imagex_grid.push([x,y,0,random_color_3]); // wall at x & y
+                imagey_grid.push([0,x,y,random_color_4]); // wall at y & z
+                imagez_grid.push([y,0,x,random_color_5]); // wall at z & x
+            }
+        }
+
+        var imagex1_grid = [[0,0,0,random_color_1],[1,0,0,random_color_1],[2,0,0,random_color_1],[3,0,0,random_color_1],[4,0,0,random_color_1],[5,0,0,random_color_1],[6,0,0,random_color_1],[7,0,0,random_color_1],[8,0,0,random_color_1],[9,0,0,random_color_1],[10,0,0,random_color_1]];
+
+        var imagez1_grid = [[0,0,0,random_color_2],[0,0,1,random_color_2],[0,0,2,random_color_2],[0,0,3,random_color_2],[0,0,4,random_color_2],[0,0,5,random_color_2],[0,0,6,random_color_2],[0,0,7,random_color_2],[0,0,8,random_color_2],[0,0,9,random_color_2],[0,0,10,random_color_2],[0,1,10,random_color_2],[0,1,9,random_color_2],[0,1,8,random_color_2],[0,1,7,random_color_2],[0,1,6,random_color_2],[0,1,5,random_color_2],[0,1,4,random_color_2],[0,1,3,random_color_2]];
 
         var image_gengar_grid = [
             // layer1
@@ -530,8 +546,17 @@
             [10,10,7,0x68507b],
         ];
 
-        var g_grids = [imagex_grid,imagey_grid,imagez_grid,image_gengar_grid];
-
+        var full_cube = []
+        var randomColor = Math.floor(Math.random()*16777215);
+        console.log("Random Color: 0x" + randomColor.toString(16));
+        for(var j = 0; j < 10; j++){
+            for(var i = 0; i < 10; i++){
+                for(var k = 0; k < 10; k++){
+                    full_cube.push([i,j,k,randomColor]);
+                }
+            }
+        }
+        var g_grids = [imagex_grid,imagey_grid,imagez_grid,imagex1_grid,imagez1_grid,image_gengar_grid,full_cube];
         var scene = new THREE.Scene();
 
         // Helper Functions
@@ -567,20 +592,21 @@
 
         function removeCube(cube) {
             this.tl = new TimelineMax();
-            this.tl.to(cube.position, 1, {y: cube.position.y*cubeGaps+40, ease: Expo.easeOut});
+            this.tl.to(cube.position, 1, {y: cube.position.y*cubeGaps+60, ease: Expo.easeOut});
             setTimeout(function() { scene.remove(cube); }, 1500);
         }
 
         function addCube(x, y, z, color) {
-            var cube = drawCube(x,y+50,z, color);
+            var cube = drawCube(x,y+60,z, color);
             moveCube(cube, x, y, z, color);
         }
 
         function moveCube(cube, x, y, z, color) {
             var color_val = new THREE.Color(color);
             this.tl = new TimelineMax();
-            this.tl.to(cube.position, 1.4*(1+(x/5.0+y/5.0+z/5.0)), {x: (x-5)*cubeGaps, y: y*cubeGaps, z: (z-5)*cubeGaps, ease: Expo.easeOut});
-            this.tl.to(cube.material.color, 1.4*(1+(x/5.0+y/5.0+z/5.0)), {r: color_val.r, g: color_val.g, b: color_val.b, ease: Expo.easeOut}, "-=2");
+            var duration = Math.min(2, 1.4*(1+(x/5.0+y/5.0+z/5.0)));
+            this.tl.to(cube.position, duration, {x: (x-5)*cubeGaps, y: y*cubeGaps, z: (z-5)*cubeGaps, ease: Expo.easeOut});
+            this.tl.to(cube.material.color, duration, {r: color_val.r, g: color_val.g, b: color_val.b, ease: Expo.easeOut}, "-=2");
         }
 
         function drawCube(x, y, z, color) {
@@ -695,7 +721,7 @@
             var intersects = raycaster.intersectObjects(scene.children, true);
 
             for(var i = 0; i < intersects.length; i++) {
-                if (intersects[i].object.geometry.type != 'PlaneGeometry') {
+                if (intersects[i].object.geometry.type == 'BoxGeometry') {
                     this.tl = new TimelineMax();
                     this.tl.to(intersects[i].object.scale, .5, {x: .5, y: .5, z: .5,ease: Expo.easeOut});
                     this.tl.to(intersects[i].object.rotation, .5, {y: Math.PI*.5, ease: Expo.easeOut});
@@ -718,24 +744,20 @@
 
         // Draw Initial Plane and Cubes
         drawPlane(0,0,0,planeColor);
-        var randomColor = Math.floor(Math.random()*16777215);
-        console.log("Random Color: 0x" + randomColor.toString(16));
-        for(var j = 0; j < 3; j++){
-            for(var i = 0; i < 4; i++){
-                for(var k = 0; k < 4; k++){
-                    addCube(i,j,k,randomColor);
-                }
-            }
-        }
 
         function cycleImage(img) {
+            var timeout_ms = 4000;
+            if (img == -1) {
+                timeout_ms = 0;
+                img = 0;
+            } 
             setTimeout(function() {
                 drawImage(g_grids[img]) 
                 cycleImage((img + 1)% g_grids.length);
-            }, 5000);
+            }, timeout_ms);
         }
         
-        cycleImage(0);
+        cycleImage(-1);
 
     </script>
 </body>
