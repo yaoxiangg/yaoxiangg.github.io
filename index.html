@@ -16,37 +16,17 @@
             display: block;
         }
 
-        h1 {
+        .title {
             position: absolute;
-            color: #d1d1e0;
-            top: 2.5em;
-            left: 4em;
-            font-size: 3.5em;
-            width: auto;
-            line-height: .8em;
-            padding: .2em;
+            margin-left: 20px;
+            color: white;
         }
 
-        p {
-            position: absolute;
-            color: #d1d1e0;
-            top: 50%;
-            left: 50%;
-            font-size: 1.8em;
-            width: auto;
-            line-height: .8em;
-            padding: .2em;
-        }
-
-        #span button {
-            font-size: .8em;
-            padding: 15px;
-        }
     </style>
 </head>
 
 <body>
-    <h1 class="shadow-lg p-5 mb-5 rounded">Genique</h1>
+    <h1 class="title">Genique</h1>
 
     <script>
 
@@ -138,7 +118,10 @@
         }
 
         const aspect = window.innerWidth / window.innerHeight;
-        const width = 50;
+        if (aspect > 1)
+            width = 50*aspect;
+        else 
+            width = 30;
         const height = width / aspect;
 
         // Setup Camera
@@ -148,7 +131,7 @@
             height / 2, // top
             height / -2, // bottom
             0, // near plane
-            200 // far plane
+            100 // far plane
         );
         camera.position.set(40, 40, 50);
         camera.lookAt(0, 0, 0);
