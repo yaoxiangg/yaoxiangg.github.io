@@ -789,6 +789,13 @@
             old_x = (event.clientX / window.innerWidth) * 2 - 1;
         }
 
+        function onTouchStart(event) {
+            is_moving_camera = true;
+            var clientX = event.touches[0].clientX;
+            old_x = clientX;
+            old_x /= 1000;
+        }
+
         function onMouseUp(event) {
             is_moving_camera = false;
         }
@@ -799,16 +806,30 @@
             mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
             mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
+            processMouse(mouse.x, mouse.y);
+            old_x = (event.clientX / window.innerWidth) * 2 - 1;
+        }
+
+        function onTouchMove(event) {
+            var clientX = event.touches[0].clientX;
+            var clientY = event.touches[0].clientY;
+            clientX /= 1000;
+            clientY /= 1000;
+            processMouse(clientX, clientY);
+            old_x = clientX;
+        }
+
+        function processMouse(clientX, clientY) {
             if (is_moving_camera) {
-                var delta = old_x - mouse.x;
+                var delta = old_x - clientX;
                 camera.position.applyQuaternion( new THREE.Quaternion().setFromAxisAngle(
                     new THREE.Vector3( 0, 1, 0 ), // The positive y-axis
-                    360 / 1000 * delta // The amount of rotation to apply this time
+                    360 / 100 * delta // The amount of rotation to apply this time
                 ));
                 camera.lookAt( scene.position );
             }
 
-            raycaster.setFromCamera(mouse, camera);
+            // raycaster.setFromCamera(mouse, camera);
             var intersects = raycaster.intersectObjects(scene.children, true);
 
             for(var i = 0; i < intersects.length; i++) {
@@ -821,6 +842,9 @@
                 return;
             }
         }
+        window.addEventListener('touchstart', onTouchStart);
+        window.addEventListener('touchend', onMouseUp);
+        window.addEventListener('touchmove', onTouchMove);
         window.addEventListener('mousedown', onMouseDown);
         window.addEventListener('mouseup', onMouseUp);
         window.addEventListener('mousemove', onMouseMove);
