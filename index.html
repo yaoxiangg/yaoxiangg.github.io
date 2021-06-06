@@ -10,6 +10,7 @@
             margin: 0;
             height: 100vh;
             font-family: 'Ubuntu', sans-serif;
+            overflow: hidden;
         }
 
         canvas {
@@ -731,7 +732,7 @@
             setTimeout(function() {
                 drawImage(g_grids[img]) 
                 cycleImage((img + 1)% g_grids.length);
-            }, 3000);
+            }, 5000);
         }
         
         cycleImage(0);
