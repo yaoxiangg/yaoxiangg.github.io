@@ -95,7 +95,7 @@
         <div class="btn-round" onclick="showImage('weird1')">WEIRD 1</div>
     </div>
 
-    <script src="/assets/js/blueprint.js"></script>
+    <script src="./assets/js/blueprint.js"></script>
     <script>
 
         // Global Vars
@@ -681,7 +681,8 @@
             this.tl = new TimelineMax();
             this.tl.to(cube.position, 1, {y: cube.position.y*cubeGaps+60, ease: Expo.easeOut});
             this.tl.to(cube.material, 1, { transparent: true, opacity: 0, ease: Expo.easeOut}, "-=1");
-            setTimeout(function() { scene.remove(cube); }, 1500);
+            var removetimeout = setTimeout(function() { scene.remove(cube); }, 1500);
+            currentTimeout.push(removetimeout);
         }
 
         function addCube(x, y, z, color) {
@@ -693,6 +694,7 @@
             var color_val = new THREE.Color(color);
             this.tl = new TimelineMax();
             var duration = Math.min(2, 1.4*(1+(x/5.0+y/5.0+z/5.0)));
+            this.tl.to(cube.material, 0, { transparent: true, opacity: 1, ease: Expo.easeOut});
             this.tl.to(cube.position, duration, {x: (x-5)*cubeGaps, y: y*cubeGaps, z: (z-5)*cubeGaps, ease: Expo.easeOut});
             this.tl.to(cube.material.color, duration, {r: color_val.r, g: color_val.g, b: color_val.b, ease: Expo.easeOut}, "-=2");
         }
