@@ -1,8 +1,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
     <style>
@@ -23,15 +24,78 @@
             color: white;
         }
 
+        @media (min-width: 600px) {
+            .menu-btns {
+                position: absolute;
+                top: 80px;
+            }
+            .mobile-menu-btns {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .mobile-menu-btns {
+                position: absolute;
+                top: 80px;
+                width: 100%;
+                text-align: center;
+            }
+            .menu-btns {
+                display: none;
+            }
+        }
+
+        .btn {
+            background: #ffffff;
+            padding: 10px 20px;
+            min-width: 100px;
+            margin-bottom: 4px;
+            cursor: pointer;
+        }
+
+        .btn:active, .btn:hover {
+            background: #eba601;
+        }
+
+        .btn-round {
+            border-radius: 5px;
+            background: #ffffff;
+            display: inline-flex;
+            margin: 5px;
+            padding: 5px 10px;
+        }
+
+        .btn-round:active, .btn-round:hover {
+            background: #eba601;
+        }
+
     </style>
 </head>
 
 <body>
     <h1 class="title">Genique</h1>
+    <div class="menu-btns">
+        <div class="btn" onclick="showImage('cube')">CUBE</div>
+        <div class="btn" onclick="showImage('dratini')">DRATINI</div>
+        <div class="btn" onclick="showImage('wallx')">WALL X</div>
+        <div class="btn" onclick="showImage('wally')">WALL Y</div>
+        <div class="btn" onclick="showImage('wallz')">WALL Z</div>
+        <div class="btn" onclick="showImage('weird1')">WEIRD 1</div>
+    </div>
+    <div class="mobile-menu-btns">
+        <div class="btn-round" onclick="showImage('cube')">CUBE</div>
+        <div class="btn-round" onclick="showImage('dratini')">DRATINI</div>
+        <div class="btn-round" onclick="showImage('wallx')">WALL X</div>
+        <div class="btn-round" onclick="showImage('wally')">WALL Y</div>
+        <div class="btn-round" onclick="showImage('wallz')">WALL Z</div>
+        <div class="btn-round" onclick="showImage('weird1')">WEIRD 1</div>
+    </div>
 
     <script>
 
         // Global Vars
+        var currentTimeout = [];
         var backgroundColor = 0x333333;
         var planeColor = 0x80cbc4;
         var cubeGaps = 1.05;
@@ -651,6 +715,21 @@
         var scene = new THREE.Scene();
 
         // Helper Functions
+        function showImage(image_name) {
+            var tl = gsap.exportRoot();
+            TweenLite.to(tl, 0, {timeScale:0, onComplete:function(){ tl.kill() }});
+            for (var i = 0; i < currentTimeout.length; i++) {
+                clearTimeout(currentTimeout[i]);
+            }
+            currentTimeout = [];
+            if (image_name == "dratini") { drawImage(g_grids[0]); }
+            if (image_name == "wallx") { drawImage(g_grids[1]); }
+            if (image_name == "wally") { drawImage(g_grids[2]); }
+            if (image_name == "wallz") { drawImage(g_grids[3]); }
+            if (image_name == "weird1") { drawImage(g_grids[6]); }
+            if (image_name == "cube") { drawImage(g_grids[7]); }
+            cycleImage(0);
+        }
         function drawImage(image_grid) {
             var idx = 0;
             var to_remove = [];
@@ -684,6 +763,7 @@
         function removeCube(cube) {
             this.tl = new TimelineMax();
             this.tl.to(cube.position, 1, {y: cube.position.y*cubeGaps+60, ease: Expo.easeOut});
+            this.tl.to(cube.material, 0.5, { transparent: true, opacity: 0, ease: Expo.easeOut}, "-=0.5");
             setTimeout(function() { scene.remove(cube); }, 1500);
         }
 
@@ -702,7 +782,7 @@
 
         function drawCube(x, y, z, color) {
             var geometry = new THREE.BoxGeometry(1, 1, 1);  
-            var material = new THREE.MeshLambertMaterial({color: color});
+            var material = new THREE.MeshPhongMaterial({color: color});
             var mesh = new THREE.Mesh(geometry, material);
             mesh.position.x = (x-5)*cubeGaps;
             mesh.position.y = y*cubeGaps;
@@ -717,7 +797,7 @@
         function drawPlane(x, y, z, color) {
             const geometry = new THREE.PlaneGeometry(20,20);
             geometry.rotateX(-Math.PI * 0.5);
-            const material = new THREE.MeshStandardMaterial( {color: color, side: THREE.DoubleSide} );
+            const material = new THREE.MeshLambertMaterial( {color: color, side: THREE.DoubleSide} );
             const plane = new THREE.Mesh( geometry, material );
             plane.position.y = -cubeGaps;
             plane.position.x = 0;
@@ -742,6 +822,7 @@
             0, // near plane
             200 // far plane
         );
+
         camera.position.set(40, 40, 40);
         camera.lookAt(0, 0, 0);
 
@@ -757,18 +838,26 @@
         // Setup Lights
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
         scene.add(ambientLight);
-        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8, 100);
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.6, 100);
         dirLight.position.set(10, 40, 20);
         dirLight.castShadow = true; // default false
         dirLight.shadow.mapSize.width = 512*2; // default
         dirLight.shadow.mapSize.height = 512*2; // default
         dirLight.shadow.camera.near = 0; // default
         dirLight.shadow.camera.far = 100; // default
-        dirLight.shadowCameraLeft = -20;
-        dirLight.shadowCameraRight = 20;
-        dirLight.shadowCameraTop = 25;
-        dirLight.shadowCameraBottom = -30;
+        dirLight.shadow.camera.left = -20;
+        dirLight.shadow.camera.right = 20;
+        dirLight.shadow.camera.top = 25;
+        dirLight.shadow.camera.bottom = -30;
         scene.add(dirLight);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enablePan = false;
+        controls.maxPolarAngle  = Math.PI / 2 - 0.1;
+        controls.minPolarAngle  = Math.PI / 8;
+        controls.maxZoom = Math.PI/ 4;
+        controls.minZoom = Math.PI/ 8;
+        controls.update();
 
         // Show Light Camera Grid
         // const helper = new THREE.CameraHelper( dirLight.shadow.camera );
@@ -787,17 +876,20 @@
         var raycaster = new THREE.Raycaster();
         var mouse = new THREE.Vector2();
         var is_moving_camera = false;
-
         function onMouseDown(event) {
             is_moving_camera = true;
             old_x = (event.clientX / window.innerWidth) * 2 - 1;
+            old_y = (event.clientY / window.innerHeight) * 2 - 1;
         }
 
         function onTouchStart(event) {
             is_moving_camera = true;
             var clientX = event.touches[0].clientX;
+            var clientY = event.touches[0].clientY;
             old_x = clientX;
             old_x /= 1000;
+            old_y = clientY;
+            old_y /= 1000;
         }
 
         function onMouseUp(event) {
@@ -812,6 +904,7 @@
 
             processMouse(mouse.x, mouse.y);
             old_x = (event.clientX / window.innerWidth) * 2 - 1;
+            old_y = (event.clientY / window.innerHeight) * 2 - 1;
         }
 
         function onTouchMove(event) {
@@ -821,18 +914,12 @@
             clientY /= 1000;
             processMouse(clientX, clientY);
             old_x = clientX;
+            old_y = clientY;
         }
 
-        function processMouse(clientX, clientY) {
-            if (is_moving_camera) {
-                var delta = old_x - clientX;
-                camera.position.applyQuaternion( new THREE.Quaternion().setFromAxisAngle(
-                    new THREE.Vector3( 0, 1, 0 ), // The positive y-axis
-                    360 / 100 * delta // The amount of rotation to apply this time
-                ));
-                camera.lookAt( scene.position );
-            }
 
+        var old_delta = 0;
+        function processMouse(clientX, clientY) {
             raycaster.setFromCamera(mouse, camera);
             var intersects = raycaster.intersectObjects(scene.children, true);
 
@@ -870,10 +957,11 @@
                 timeout_ms = 0;
                 img = 0;
             } 
-            setTimeout(function() {
+            var timeout = setTimeout(function() {
                 drawImage(g_grids[img]) 
-                cycleImage((img + 1)% g_grids.length);
+                cycleImage((img + 1) % g_grids.length);
             }, timeout_ms);
+            currentTimeout.push(timeout);
         }
         
         cycleImage(-1);
