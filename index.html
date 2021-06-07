@@ -52,7 +52,7 @@
         .btn {
             background: #ffffff;
             padding: 10px 20px;
-            min-width: 100px;
+            min-width: 80px;
             margin-bottom: 4px;
             cursor: pointer;
         }
@@ -67,17 +67,75 @@
             display: inline-flex;
             margin: 5px;
             padding: 5px 10px;
+            cursor: pointer;
         }
 
         .btn-round:active, .btn-round:hover {
             background: #eba601;
         }
 
+        .switch {
+          display: inline-block;
+          height: 34px;
+          position: relative;
+          width: 60px;
+          position: absolute;
+          right: 20px;
+          top: 25px;
+        }
+
+        .switch input {
+          display:none;
+        }
+
+        .slider {
+          background-color: #ccc;
+          bottom: 0;
+          cursor: pointer;
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+          transition: .4s;
+        }
+
+        .slider:before {
+          background-color: #fff;
+          bottom: 4px;
+          content: "";
+          height: 26px;
+          left: 4px;
+          position: absolute;
+          transition: .4s;
+          width: 26px;
+        }
+
+        input:checked + .slider {
+          background-color: #66bb6a;
+        }
+
+        input:checked + .slider:before {
+          transform: translateX(26px);
+        }
+
+        .slider.round {
+          border-radius: 34px;
+        }
+
+        .slider.round:before {
+          border-radius: 50%;
+        }
+
+
     </style>
 </head>
 
 <body>
     <h1 class="title">Genique</h1>
+    <label class="switch" for="checkbox">
+        <input type="checkbox" id="checkbox" checked/>
+        <div class="slider round" onclick="toggleCycle()"></div>
+    </label>
     <div class="menu-btns">
         <div class="btn" onclick="showImage('helloworld')">你好世界</div>
         <div class="btn" onclick="showImage('cube')">CUBE</div>
@@ -104,8 +162,9 @@
 
         // Global Vars
         var currentTimeout = [];
-        var backgroundColor = 0x333333;
-        var planeColor = 0x80cbc4;
+        var cycle_enabled = true;
+        var backgroundColor = 0x707070;
+        var planeColor = 0xf7f9fb;
         var cubeGaps = 1.05;
 
         // Cubes Grids
@@ -143,7 +202,9 @@
                 if (image_name == "weird1") { drawImage(image_gengar_grid); }
                 if (image_name == "cube") { drawImage(full_cube); }
                 if (image_name == "helloworld") { drawImage(helloworld_grid); }
-                cycleImage(0);
+                if (cycle_enabled) {
+                    cycleImage(0);
+                }
             }});
             
         }
@@ -218,7 +279,7 @@
             geometry.rotateX(-Math.PI * 0.5);
             const material = new THREE.MeshLambertMaterial( {color: color, side: THREE.DoubleSide} );
             const plane = new THREE.Mesh( geometry, material );
-            plane.position.y = -cubeGaps;
+            plane.position.y = -0.5;//cubeGaps;
             plane.position.x = 0;
             plane.position.z = 0;
             plane.receiveShadow = true;
@@ -274,7 +335,7 @@
         controls.enablePan = false;
         controls.maxPolarAngle  = Math.PI / 2 - 0.1;
         controls.minPolarAngle  = Math.PI / 8;
-        controls.maxZoom = Math.PI/ 4;
+        controls.maxZoom = Math.PI/ 2;
         controls.minZoom = Math.PI/ 8;
         controls.update();
 
@@ -370,6 +431,17 @@
             renderer.setSize( window.innerWidth, window.innerHeight );
         }
 
+        function toggleCycle() {
+            if (cycle_enabled) {
+                for (var i = 0; i < currentTimeout.length; i++) {
+                    clearTimeout(currentTimeout[i]);
+                }
+                currentTimeout = [];
+            } else {
+                cycleImage(0);
+            }
+            cycle_enabled = !cycle_enabled;
+        }
         // Script after Init
 
         // Draw Initial Plane and Cubes
