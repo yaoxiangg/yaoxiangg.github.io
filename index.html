@@ -161,6 +161,7 @@
     <script>
 
         // Global Vars
+        console.log(gsap.ticker);
         var currentTimeout = [];
         var cycle_enabled = true;
         var backgroundColor = 0x707070;
@@ -192,7 +193,7 @@
                 clearTimeout(currentTimeout[i]);
             }
             currentTimeout = [];
-            TweenLite.to(tl, 0, {timeScale:0, onComplete:function(){ 
+            gsap.to(tl, 0, {timeScale:0, onComplete:function(){ 
                 tl.kill();
                 if (image_name == "snorlax") { drawImage(snorlax_grid); }
                 if (image_name == "dratini") { drawImage(dratini_grid); }
@@ -239,9 +240,8 @@
         }
 
         function removeCube(cube) {
-            this.tl = new TimelineMax();
-            this.tl.to(cube.position, 1, {y: cube.position.y*cubeGaps+60, ease: Expo.easeOut});
-            this.tl.to(cube.material, 1, { transparent: true, opacity: 0, ease: Expo.easeOut}, "-=1");
+            gsap.to(cube.position, 1, {y: cube.position.y*cubeGaps+60, ease: Expo.easeOut});
+            gsap.to(cube.material, 1, { transparent: true, opacity: 0, ease: Expo.easeOut}, "-=1");
             var removetimeout = setTimeout(function() { scene.remove(cube); }, 1500);
             currentTimeout.push(removetimeout);
         }
@@ -253,11 +253,10 @@
 
         function moveCube(cube, x, y, z, color) {
             var color_val = new THREE.Color(color);
-            this.tl = new TimelineMax();
             var duration = Math.min(2, 1.4*(1+(x/5.0+y/5.0+z/5.0)));
-            this.tl.to(cube.material, 0, { transparent: true, opacity: 1, ease: Expo.easeOut});
-            this.tl.to(cube.position, duration, {x: (x-5)*cubeGaps, y: y*cubeGaps, z: (z-5)*cubeGaps, ease: Expo.easeOut});
-            this.tl.to(cube.material.color, duration, {r: color_val.r, g: color_val.g, b: color_val.b, ease: Expo.easeOut}, "-=2");
+            gsap.to(cube.material, 0, { transparent: true, opacity: 1, ease: Expo.easeOut});
+            gsap.to(cube.position, duration, {x: (x-5)*cubeGaps, y: y*cubeGaps, z: (z-5)*cubeGaps, ease: Expo.easeOut});
+            gsap.to(cube.material.color, duration, {r: color_val.r, g: color_val.g, b: color_val.b, ease: Expo.easeOut}, "-=2");
         }
 
         function drawCube(x, y, z, color) {
@@ -349,7 +348,6 @@
         document.body.appendChild(renderer.domElement);
 
         function render(){
-            camera.updateProjectionMatrix();
             renderer.render(scene, camera);
             requestAnimationFrame(render);
         };
@@ -402,10 +400,7 @@
 
             for(var i = 0; i < intersects.length; i++) {
                 if (intersects[i].object.geometry.type == 'BoxGeometry') {
-                    this.tl = new TimelineMax();
-                    this.tl.to(intersects[i].object.scale, .5, {x: .5, y: .5, z: .5,ease: Expo.easeOut});
-                    this.tl.to(intersects[i].object.rotation, .5, {y: Math.PI*.5, ease: Expo.easeOut});
-                    this.tl.to(intersects[i].object.scale, .5, {x: 1, y: 1, z: 1,ease: Expo.easeOut});
+                    gsap.to(intersects[i].object.rotation, 1, {y: Math.PI*.5, ease: Expo.easeOut});
                 }
                 return;
             }
