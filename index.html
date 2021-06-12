@@ -141,6 +141,7 @@
         <div class="btn" onclick="showImage('cube')">CUBE</div>
         <div class="btn" onclick="showImage('snorlax')">SNORLAX</div>
         <div class="btn" onclick="showImage('dratini')">DRATINI</div>
+        <div class="btn" onclick="showImage('charmander')">CHARMANDER</div>
         <div class="btn" onclick="showImage('wallx')">WALL X</div>
         <div class="btn" onclick="showImage('wally')">WALL Y</div>
         <div class="btn" onclick="showImage('wallz')">WALL Z</div>
@@ -151,6 +152,7 @@
         <div class="btn-round" onclick="showImage('cube')">CUBE</div>
         <div class="btn-round" onclick="showImage('snorlax')">SNORLAX</div>
         <div class="btn-round" onclick="showImage('dratini')">DRATINI</div>
+        <div class="btn-round" onclick="showImage('charmander')">CHARMANDER</div>
         <div class="btn-round" onclick="showImage('wallx')">WALL X</div>
         <div class="btn-round" onclick="showImage('wally')">WALL Y</div>
         <div class="btn-round" onclick="showImage('wallz')">WALL Z</div>
@@ -203,13 +205,17 @@
                 if (image_name == "weird1") { drawImage(image_gengar_grid); }
                 if (image_name == "cube") { drawImage(full_cube); }
                 if (image_name == "helloworld") { drawImage(helloworld_grid); }
+                if (image_name == "charmander") { drawImage(charmander_grid); }
                 if (cycle_enabled) {
                     cycleImage(0);
                 }
             }});
             
         }
+        var is_drawing = false;
         function drawImage(image_grid) {
+            if (is_drawing) return;
+            is_drawing = true;
             var idx = 0;
             var to_remove = [];
             scene.traverseVisible( function ( object ) {
@@ -237,24 +243,27 @@
             var to_add = image_grid.length - idx;
             for (var c = 0; c < to_add; c++) 
                 addCube(image_grid[idx+c][0], image_grid[idx+c][1], image_grid[idx+c][2], image_grid[idx+c][3]);
+            is_drawing = false;
         }
 
         function removeCube(cube) {
-            gsap.to(cube.position, 1, {y: cube.position.y*cubeGaps+60, ease: Expo.easeOut});
-            gsap.to(cube.material, 1, { transparent: true, opacity: 0, ease: Expo.easeOut}, "-=1");
+            // gsap.to(cube.position, 1, {y: cube.position.y*cubeGaps+60, ease: Expo.easeOut});
+            gsap.to(cube.material, 1, { transparent: true, opacity: 0, ease: Expo.easeOut});
+            gsap.to(cube.scale, 1, { x: 0.0, y: 0.0, z: 0.0, ease: Expo.easeOut}, "-=1");
             var removetimeout = setTimeout(function() { scene.remove(cube); }, 1500);
             currentTimeout.push(removetimeout);
         }
 
         function addCube(x, y, z, color) {
-            var cube = drawCube(x,y+60,z, color);
+            var cube = drawCube(5,0,5, color);
             moveCube(cube, x, y, z, color);
         }
 
         function moveCube(cube, x, y, z, color) {
             var color_val = new THREE.Color(color);
             var duration = Math.min(2, 1.4*(1+(x/5.0+y/5.0+z/5.0)));
-            gsap.to(cube.material, 0, { transparent: true, opacity: 1, ease: Expo.easeOut});
+            gsap.to(cube.material, 1, { transparent: true, opacity: 1, ease: Expo.easeOut});
+            gsap.to(cube.scale, 1, { x: 1, y: 1, z: 1, ease: Expo.easeOut}, "-=1");
             gsap.to(cube.position, duration, {x: (x-5)*cubeGaps, y: y*cubeGaps, z: (z-5)*cubeGaps, ease: Expo.easeOut});
             gsap.to(cube.material.color, duration, {r: color_val.r, g: color_val.g, b: color_val.b, ease: Expo.easeOut}, "-=2");
         }

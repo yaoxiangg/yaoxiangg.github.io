@@ -1834,3 +1834,585 @@ var helloworld_4_grid = [
     [h4_x+2,h4_y+11,h4_z+4,0x7cb342],
     [h4_x+1,h4_y+11,h4_z+4,0x7cb342],
 ];
+
+var ch_x = 2;
+var ch_y = 1;
+var ch_z = 5;
+//  #FFFACD lemon
+
+var charmander_grid = [
+    // Part 8 - Legs
+    [ch_x+0,ch_y-1,ch_z+1,0xFF8C00],
+    [ch_x+1,ch_y-1,ch_z+1,0xFF8C00],
+    [ch_x+5,ch_y-1,ch_z+1,0xFF8C00],
+    [ch_x+6,ch_y-1,ch_z+1,0xFF8C00],
+    [ch_x+0,ch_y-1,ch_z+2,0xFF8C00],
+    [ch_x+1,ch_y-1,ch_z+2,0xFF8C00],
+    [ch_x+5,ch_y-1,ch_z+2,0xFF8C00],
+    [ch_x+6,ch_y-1,ch_z+2,0xFF8C00],
+    [ch_x+0,ch_y-1,ch_z+3,0xFF8C00],
+    [ch_x+1,ch_y-1,ch_z+3,0xFF8C00],
+    [ch_x+5,ch_y-1,ch_z+3,0xFF8C00],
+    [ch_x+6,ch_y-1,ch_z+3,0xFF8C00],
+
+
+    // Part 1 - Layer 1
+    [ch_x+2,ch_y+0,ch_z-1,0xFF8C00],
+    [ch_x+3,ch_y+0,ch_z-1,0xFF8C00],
+    [ch_x+4,ch_y+0,ch_z-1,0xFF8C00],
+
+    [ch_x+0,ch_y+0,ch_z-0,0xFF8C00],
+    [ch_x+1,ch_y+0,ch_z-0,0xFF8C00],
+    [ch_x+2,ch_y+0,ch_z-0,0xFF8C00],
+    [ch_x+3,ch_y+0,ch_z-0,0xFF8C00],
+    [ch_x+4,ch_y+0,ch_z-0,0xFF8C00],
+    [ch_x+5,ch_y+0,ch_z-0,0xFF8C00],
+    [ch_x+6,ch_y+0,ch_z-0,0xFF8C00],
+
+    [ch_x+0,ch_y+0,ch_z+1,0xFF8C00],
+    [ch_x+1,ch_y+0,ch_z+1,0xFF8C00],
+    [ch_x+2,ch_y+0,ch_z+1,0xFFFACD],
+    [ch_x+3,ch_y+0,ch_z+1,0xFFFACD],
+    [ch_x+4,ch_y+0,ch_z+1,0xFFFACD],
+    [ch_x+5,ch_y+0,ch_z+1,0xFF8C00],
+    [ch_x+6,ch_y+0,ch_z+1,0xFF8C00],
+
+    [ch_x+0,ch_y+0,ch_z+2,0xFF8C00],
+    [ch_x+1,ch_y+0,ch_z+2,0xFF8C00],
+    [ch_x+2,ch_y+0,ch_z+2,0xFFFACD],
+    [ch_x+3,ch_y+0,ch_z+2,0xFFFACD],
+    [ch_x+4,ch_y+0,ch_z+2,0xFFFACD],
+    [ch_x+5,ch_y+0,ch_z+2,0xFF8C00],
+    [ch_x+6,ch_y+0,ch_z+2,0xFF8C00],
+
+    // Part 1 - Layer 2
+
+    [ch_x+2,ch_y+1,ch_z+3,0xFFFACD],
+    [ch_x+3,ch_y+1,ch_z+3,0xFFFACD],
+    [ch_x+4,ch_y+1,ch_z+3,0xFFFACD],
+
+    [ch_x+2,ch_y+1,ch_z+2,0xFFFACD],
+    [ch_x+3,ch_y+1,ch_z+2,0xFFFACD],
+    [ch_x+4,ch_y+1,ch_z+2,0xFFFACD],
+
+    [ch_x+0,ch_y+1,ch_z+1,0xFF8C00],
+    [ch_x+1,ch_y+1,ch_z+1,0xFF8C00],
+    [ch_x+2,ch_y+1,ch_z+1,0xFF8C00],
+    [ch_x+3,ch_y+1,ch_z+1,0xFF8C00],
+    [ch_x+4,ch_y+1,ch_z+1,0xFF8C00],
+    [ch_x+5,ch_y+1,ch_z+1,0xFF8C00],
+    [ch_x+6,ch_y+1,ch_z+1,0xFF8C00],
+
+    [ch_x+0,ch_y+1,ch_z+0,0xFF8C00],
+    [ch_x+1,ch_y+1,ch_z+0,0xFF8C00],
+    [ch_x+2,ch_y+1,ch_z+0,0xFF8C00],
+    [ch_x+3,ch_y+1,ch_z+0,0xFF8C00],
+    [ch_x+4,ch_y+1,ch_z+0,0xFF8C00],
+    [ch_x+5,ch_y+1,ch_z+0,0xFF8C00],
+    [ch_x+6,ch_y+1,ch_z+0,0xFF8C00],
+
+    [ch_x+1,ch_y+1,ch_z-1,0xFF8C00],
+    [ch_x+2,ch_y+1,ch_z-1,0xFF8C00],
+    [ch_x+3,ch_y+1,ch_z-1,0xFF8C00],
+    [ch_x+4,ch_y+1,ch_z-1,0xFF8C00],
+    [ch_x+5,ch_y+1,ch_z-1,0xFF8C00],
+
+    [ch_x+2,ch_y+1,ch_z-2,0xFF8C00],
+    [ch_x+3,ch_y+1,ch_z-2,0xFF8C00],
+    [ch_x+4,ch_y+1,ch_z-2,0xFF8C00],
+
+    // Part 2 - Layer 1
+    [ch_x+2,ch_y+2,ch_z+3,0xFFFACD],
+    [ch_x+3,ch_y+2,ch_z+3,0xFFFACD],
+    [ch_x+4,ch_y+2,ch_z+3,0xFFFACD],
+
+    [ch_x+1,ch_y+2,ch_z+2,0xFF8C00],
+    [ch_x+2,ch_y+2,ch_z+2,0xFF8C00],
+    [ch_x+4,ch_y+2,ch_z+2,0xFF8C00],
+    [ch_x+5,ch_y+2,ch_z+2,0xFF8C00],
+
+    [ch_x+0,ch_y+2,ch_z+1,0xFF8C00],
+    [ch_x+1,ch_y+2,ch_z+1,0xFF8C00],
+    [ch_x+2,ch_y+2,ch_z+1,0xFF8C00],
+    [ch_x+4,ch_y+2,ch_z+1,0xFF8C00],
+    [ch_x+5,ch_y+2,ch_z+1,0xFF8C00],
+    [ch_x+6,ch_y+2,ch_z+1,0xFF8C00],
+
+    [ch_x+0,ch_y+2,ch_z+0,0xFF8C00],
+    [ch_x+1,ch_y+2,ch_z+0,0xFF8C00],
+    [ch_x+5,ch_y+2,ch_z+0,0xFF8C00],
+    [ch_x+6,ch_y+2,ch_z+0,0xFF8C00],
+
+    [ch_x+0,ch_y+2,ch_z-1,0xFF8C00],
+    [ch_x+1,ch_y+2,ch_z-1,0xFF8C00],
+    [ch_x+2,ch_y+2,ch_z-1,0xFF8C00],
+    [ch_x+3,ch_y+2,ch_z-1,0xFF8C00],
+    [ch_x+4,ch_y+2,ch_z-1,0xFF8C00],
+    [ch_x+5,ch_y+2,ch_z-1,0xFF8C00],
+    [ch_x+6,ch_y+2,ch_z-1,0xFF8C00],
+
+    [ch_x+1,ch_y+2,ch_z-2,0xFF8C00],
+    [ch_x+2,ch_y+2,ch_z-2,0xFF8C00],
+    [ch_x+3,ch_y+2,ch_z-2,0xFF8C00],
+    [ch_x+4,ch_y+2,ch_z-2,0xFF8C00],
+    [ch_x+5,ch_y+2,ch_z-2,0xFF8C00],
+
+    [ch_x+2,ch_y+2,ch_z-3,0xFF8C00],
+    [ch_x+3,ch_y+2,ch_z-3,0xFF8C00],
+    [ch_x+4,ch_y+2,ch_z-3,0xFF8C00],
+
+    [ch_x+2,ch_y+2,ch_z-4,0xFF8C00],
+    [ch_x+3,ch_y+2,ch_z-4,0xFF8C00],
+
+    // Part 2 - Layer 2
+    [ch_x+2,ch_y+3,ch_z+3,0xFFFACD],
+    [ch_x+3,ch_y+3,ch_z+3,0xFFFACD],
+    [ch_x+4,ch_y+3,ch_z+3,0xFFFACD],
+
+    [ch_x+1,ch_y+3,ch_z+2,0xFF8C00],
+    [ch_x+2,ch_y+3,ch_z+2,0xFFFACD],
+    [ch_x+3,ch_y+3,ch_z+2,0xFFFACD],
+    [ch_x+4,ch_y+3,ch_z+2,0xFFFACD],
+    [ch_x+5,ch_y+3,ch_z+2,0xFF8C00],
+
+    [ch_x+0,ch_y+3,ch_z+1,0xFF8C00],
+    [ch_x+1,ch_y+3,ch_z+1,0xFF8C00],
+    [ch_x+5,ch_y+3,ch_z+1,0xFF8C00],
+    [ch_x+6,ch_y+3,ch_z+1,0xFF8C00],
+
+    [ch_x+0,ch_y+3,ch_z+0,0xFF8C00],
+    [ch_x+1,ch_y+3,ch_z+0,0xFF8C00],
+    [ch_x+5,ch_y+3,ch_z+0,0xFF8C00],
+    [ch_x+6,ch_y+3,ch_z+0,0xFF8C00],
+
+    [ch_x+0,ch_y+3,ch_z-1,0xFF8C00],
+    [ch_x+1,ch_y+3,ch_z-1,0xFF8C00],
+    [ch_x+5,ch_y+3,ch_z-1,0xFF8C00],
+    [ch_x+6,ch_y+3,ch_z-1,0xFF8C00],
+
+    [ch_x+1,ch_y+3,ch_z-2,0xFF8C00],
+    [ch_x+2,ch_y+3,ch_z-2,0xFF8C00],
+    [ch_x+4,ch_y+3,ch_z-2,0xFF8C00],
+    [ch_x+5,ch_y+3,ch_z-2,0xFF8C00],
+
+    [ch_x+2,ch_y+3,ch_z-3,0xFF8C00],
+    [ch_x+4,ch_y+3,ch_z-3,0xFF8C00],
+
+    [ch_x+2,ch_y+3,ch_z-4,0xFF8C00],
+    [ch_x+3,ch_y+3,ch_z-4,0xFF8C00],
+    [ch_x+4,ch_y+3,ch_z-4,0xFF8C00],
+
+    [ch_x+2,ch_y+3,ch_z-5,0xFF8C00],
+    [ch_x+3,ch_y+3,ch_z-5,0xFF8C00],
+
+    // Part 3 - Layer 1
+    [ch_x+2,ch_y+4,ch_z+3,0xFFFACD],
+    [ch_x+3,ch_y+4,ch_z+3,0xFFFACD],
+    [ch_x+4,ch_y+4,ch_z+3,0xFFFACD],
+
+    [ch_x+1,ch_y+4,ch_z+2,0xFF8C00],
+    [ch_x+2,ch_y+4,ch_z+2,0xFF8C00],
+    [ch_x+4,ch_y+4,ch_z+2,0xFF8C00],
+    [ch_x+5,ch_y+4,ch_z+2,0xFF8C00],
+
+    [ch_x+1,ch_y+4,ch_z+1,0xFF8C00],
+    [ch_x+2,ch_y+4,ch_z+1,0xFF8C00],
+    [ch_x+4,ch_y+4,ch_z+1,0xFF8C00],
+    [ch_x+5,ch_y+4,ch_z+1,0xFF8C00],
+
+    [ch_x+0,ch_y+4,ch_z+0,0xFF8C00],
+    [ch_x+1,ch_y+4,ch_z+0,0xFF8C00],
+    [ch_x+2,ch_y+4,ch_z+0,0xFF8C00],
+    [ch_x+4,ch_y+4,ch_z+0,0xFF8C00],
+    [ch_x+5,ch_y+4,ch_z+0,0xFF8C00],
+    [ch_x+6,ch_y+4,ch_z+0,0xFF8C00],
+
+    [ch_x+1,ch_y+4,ch_z-1,0xFF8C00],
+    [ch_x+2,ch_y+4,ch_z-1,0xFF8C00],
+    [ch_x+4,ch_y+4,ch_z-1,0xFF8C00],
+    [ch_x+5,ch_y+4,ch_z-1,0xFF8C00],
+
+    [ch_x+2,ch_y+4,ch_z-2,0xFF8C00],
+    [ch_x+3,ch_y+4,ch_z-2,0xFF8C00],
+    [ch_x+4,ch_y+4,ch_z-2,0xFF8C00],
+
+    [ch_x+2,ch_y+4,ch_z-3,0xFF8C00],
+    [ch_x+3,ch_y+4,ch_z-3,0xFF8C00],
+
+    [ch_x+2,ch_y+4,ch_z-4,0xFF8C00],
+    [ch_x+3,ch_y+4,ch_z-4,0xFF8C00],
+
+    [ch_x+2,ch_y+4,ch_z-5,0xFF8C00],
+    [ch_x+3,ch_y+4,ch_z-5,0xFF8C00],
+
+    // Part 3 - Layer 2
+    [ch_x+0,ch_y+5,ch_z+3,0xFF8C00],
+    [ch_x+1,ch_y+5,ch_z+3,0xFF8C00],
+    [ch_x+2,ch_y+5,ch_z+3,0xFF8C00],
+    [ch_x+3,ch_y+5,ch_z+3,0xFF8C00],
+    [ch_x+4,ch_y+5,ch_z+3,0xFF8C00],
+    [ch_x+5,ch_y+5,ch_z+3,0xFF8C00],
+    [ch_x+6,ch_y+5,ch_z+3,0xFF8C00],
+
+    [ch_x+0,ch_y+4,ch_z+3,0xFF8C00],
+    [ch_x+1,ch_y+4,ch_z+3,0xFF8C00],
+    [ch_x+0,ch_y+4,ch_z+4,0xFF8C00],
+    [ch_x+1,ch_y+4,ch_z+4,0xFF8C00],
+
+    [ch_x+5,ch_y+4,ch_z+3,0xFF8C00],
+    [ch_x+6,ch_y+4,ch_z+3,0xFF8C00],
+    [ch_x+5,ch_y+4,ch_z+4,0xFF8C00],
+    [ch_x+6,ch_y+4,ch_z+4,0xFF8C00],
+
+    [ch_x+0,ch_y+5,ch_z+2,0xFF8C00],
+    [ch_x+1,ch_y+5,ch_z+2,0xFF8C00],
+    [ch_x+2,ch_y+5,ch_z+2,0xFF8C00],
+    [ch_x+3,ch_y+5,ch_z+2,0xFF8C00],
+    [ch_x+4,ch_y+5,ch_z+2,0xFF8C00],
+    [ch_x+5,ch_y+5,ch_z+2,0xFF8C00],
+    [ch_x+6,ch_y+5,ch_z+2,0xFF8C00],
+
+    [ch_x+1,ch_y+5,ch_z+1,0xFF8C00],
+    [ch_x+2,ch_y+5,ch_z+1,0xFF8C00],
+    [ch_x+4,ch_y+5,ch_z+1,0xFF8C00],
+    [ch_x+5,ch_y+5,ch_z+1,0xFF8C00],
+
+    [ch_x+1,ch_y+5,ch_z+0,0xFF8C00],
+    [ch_x+2,ch_y+5,ch_z+0,0xFF8C00],
+    [ch_x+4,ch_y+5,ch_z+0,0xFF8C00],
+    [ch_x+5,ch_y+5,ch_z+0,0xFF8C00],
+
+    [ch_x+2,ch_y+5,ch_z-1,0xFF8C00],
+    [ch_x+3,ch_y+5,ch_z-1,0xFF8C00],
+    [ch_x+4,ch_y+5,ch_z-1,0xFF8C00],
+
+    [ch_x+2,ch_y+5,ch_z-2,0xFF8C00],
+    [ch_x+3,ch_y+5,ch_z-2,0xFF8C00],
+    [ch_x+4,ch_y+5,ch_z-2,0xFF8C00],
+
+    [ch_x+3,ch_y+5,ch_z-4,0xFF8C00],
+    [ch_x+2,ch_y+5,ch_z-5,0xFF8C00],
+    [ch_x+3,ch_y+5,ch_z-5,0xFF8C00],
+
+    // Part 4 - Layer 1
+    [ch_x+2,ch_y+6,ch_z+3,0xFF8C00],
+    [ch_x+3,ch_y+6,ch_z+3,0xFF8C00],
+    [ch_x+4,ch_y+6,ch_z+3,0xFF8C00],
+
+    [ch_x+2,ch_y+6,ch_z+4,0xFF8C00],
+    [ch_x+3,ch_y+6,ch_z+4,0xFF8C00],
+    [ch_x+4,ch_y+6,ch_z+4,0xFF8C00],
+
+    [ch_x+2,ch_y+6,ch_z+5,0xFF8C00],
+    [ch_x+3,ch_y+6,ch_z+5,0xFF8C00],
+    [ch_x+4,ch_y+6,ch_z+5,0xFF8C00],
+
+    [ch_x+2,ch_y+6,ch_z+6,0xFF8C00],
+    [ch_x+3,ch_y+6,ch_z+6,0xFF8C00],
+    [ch_x+4,ch_y+6,ch_z+6,0xFF8C00],
+
+    [ch_x+2,ch_y+6,ch_z+7,0xFF8C00],
+    [ch_x+3,ch_y+6,ch_z+7,0xFF8C00],
+    [ch_x+4,ch_y+6,ch_z+7,0xFF8C00],
+
+    [ch_x+1,ch_y+6,ch_z+2,0xFF8C00],
+    [ch_x+2,ch_y+6,ch_z+2,0xFF8C00],
+    [ch_x+3,ch_y+6,ch_z+2,0xFF8C00],
+    [ch_x+4,ch_y+6,ch_z+2,0xFF8C00],
+    [ch_x+5,ch_y+6,ch_z+2,0xFF8C00],
+
+    [ch_x+1,ch_y+6,ch_z+1,0xFF8C00],
+    [ch_x+2,ch_y+6,ch_z+1,0xFF8C00],
+    [ch_x+4,ch_y+6,ch_z+1,0xFF8C00],
+    [ch_x+5,ch_y+6,ch_z+1,0xFF8C00],
+
+    [ch_x+2,ch_y+6,ch_z+0,0xFF8C00],
+    [ch_x+3,ch_y+6,ch_z+0,0xFF8C00],
+    [ch_x+4,ch_y+6,ch_z+0,0xFF8C00],
+
+    [ch_x+2,ch_y+6,ch_z-1,0xFF8C00],
+    [ch_x+3,ch_y+6,ch_z-1,0xFF8C00],
+    [ch_x+4,ch_y+6,ch_z-1,0xFF8C00],
+
+    [ch_x+3,ch_y+6,ch_z-5,0xFF8C00],
+
+    // Part 4 - Layer 2
+    [ch_x+2,ch_y+7,ch_z+8,0xFF8C00],
+    [ch_x+3,ch_y+7,ch_z+8,0xFF8C00],
+    [ch_x+4,ch_y+7,ch_z+8,0xFF8C00],
+
+    [ch_x+1,ch_y+7,ch_z+7,0xFF8C00],
+    [ch_x+2,ch_y+7,ch_z+7,0xFF8C00],
+    [ch_x+3,ch_y+7,ch_z+7,0xFF8C00],
+    [ch_x+4,ch_y+7,ch_z+7,0xFF8C00],
+    [ch_x+5,ch_y+7,ch_z+7,0xFF8C00],
+
+    [ch_x+1,ch_y+7,ch_z+6,0xFF8C00],
+    [ch_x+2,ch_y+7,ch_z+6,0xFF8C00],
+    [ch_x+4,ch_y+7,ch_z+6,0xFF8C00],
+    [ch_x+5,ch_y+7,ch_z+6,0xFF8C00],
+
+    [ch_x+0,ch_y+7,ch_z+5,0xFF8C00],
+    [ch_x+1,ch_y+7,ch_z+5,0xFF8C00],
+    [ch_x+2,ch_y+7,ch_z+5,0xFF8C00],
+    [ch_x+3,ch_y+7,ch_z+5,0xFF8C00],
+    [ch_x+4,ch_y+7,ch_z+5,0xFF8C00],
+    [ch_x+5,ch_y+7,ch_z+5,0xFF8C00],
+    [ch_x+6,ch_y+7,ch_z+5,0xFF8C00],
+
+    [ch_x+0,ch_y+7,ch_z+4,0xFF8C00],
+    [ch_x+1,ch_y+7,ch_z+4,0xFF8C00],
+    [ch_x+2,ch_y+7,ch_z+4,0xFF8C00],
+    [ch_x+3,ch_y+7,ch_z+4,0xFF8C00],
+    [ch_x+4,ch_y+7,ch_z+4,0xFF8C00],
+    [ch_x+5,ch_y+7,ch_z+4,0xFF8C00],
+    [ch_x+6,ch_y+7,ch_z+4,0xFF8C00],
+
+    [ch_x+1,ch_y+7,ch_z+3,0xFF8C00],
+    [ch_x+2,ch_y+7,ch_z+3,0xFF8C00],
+    [ch_x+3,ch_y+7,ch_z+3,0xFF8C00],
+    [ch_x+4,ch_y+7,ch_z+3,0xFF8C00],
+    [ch_x+5,ch_y+7,ch_z+3,0xFF8C00],
+
+    [ch_x+2,ch_y+7,ch_z+2,0xFF8C00],
+    [ch_x+3,ch_y+7,ch_z+2,0xFF8C00],
+    [ch_x+4,ch_y+7,ch_z+2,0xFF8C00],
+
+    [ch_x+2,ch_y+7,ch_z+1,0xFF8C00],
+    [ch_x+3,ch_y+7,ch_z+1,0xFF8C00],
+    [ch_x+4,ch_y+7,ch_z+1,0xFF8C00],
+
+    [ch_x+2,ch_y+7,ch_z+0,0xFF8C00],
+    [ch_x+3,ch_y+7,ch_z+0,0xFF8C00],
+    [ch_x+4,ch_y+7,ch_z+0,0xFF8C00],
+
+    [ch_x+5,ch_y+7,ch_z+6,0xFF8C00],
+    [ch_x+5,ch_y+7,ch_z+5,0xFF8C00],
+    [ch_x+5,ch_y+7,ch_z+4,0xFF8C00],
+
+    [ch_x+1,ch_y+7,ch_z+6,0xFF8C00],
+    [ch_x+1,ch_y+7,ch_z+5,0xFF8C00],
+    [ch_x+1,ch_y+7,ch_z+4,0xFF8C00],
+
+    // Part 5 - Layer 1
+    [ch_x+2,ch_y+8,ch_z+8,0xFF8C00],
+    [ch_x+3,ch_y+8,ch_z+8,0xFF8C00],
+    [ch_x+4,ch_y+8,ch_z+8,0xFF8C00],
+
+    [ch_x+1,ch_y+8,ch_z+7,0xFF8C00],
+    [ch_x+2,ch_y+8,ch_z+7,0xFF8C00],
+    [ch_x+3,ch_y+8,ch_z+7,0xFF8C00],
+    [ch_x+4,ch_y+8,ch_z+7,0xFF8C00],
+    [ch_x+5,ch_y+8,ch_z+7,0xFF8C00],
+
+    [ch_x+0,ch_y+8,ch_z+6,0xFF8C00],
+    [ch_x+1,ch_y+8,ch_z+6,0xFF8C00],
+    [ch_x+2,ch_y+8,ch_z+6,0xFF8C00],
+    [ch_x+3,ch_y+8,ch_z+6,0xFF8C00],
+    [ch_x+4,ch_y+8,ch_z+6,0xFF8C00],
+    [ch_x+5,ch_y+8,ch_z+6,0xFF8C00],
+    [ch_x+6,ch_y+8,ch_z+6,0xFF8C00],
+
+    [ch_x+0,ch_y+8,ch_z+5,0x000080],
+    [ch_x+1,ch_y+8,ch_z+5,0xFF8C00],
+    [ch_x+2,ch_y+8,ch_z+5,0xFF8C00],
+    [ch_x+3,ch_y+8,ch_z+5,0xFF8C00],
+    [ch_x+4,ch_y+8,ch_z+5,0xFF8C00],
+    [ch_x+5,ch_y+8,ch_z+5,0xFF8C00],
+    [ch_x+6,ch_y+8,ch_z+5,0x000080],
+
+    [ch_x+0,ch_y+8,ch_z+4,0xFF8C00],
+    [ch_x+1,ch_y+8,ch_z+4,0xFF8C00],
+    [ch_x+5,ch_y+8,ch_z+4,0xFF8C00],
+    [ch_x+6,ch_y+8,ch_z+4,0xFF8C00],
+
+    [ch_x+0,ch_y+8,ch_z+3,0xFF8C00],
+    [ch_x+1,ch_y+8,ch_z+3,0xFF8C00],
+    [ch_x+2,ch_y+8,ch_z+3,0xFF8C00],
+    [ch_x+4,ch_y+8,ch_z+3,0xFF8C00],
+    [ch_x+5,ch_y+8,ch_z+3,0xFF8C00],
+    [ch_x+6,ch_y+8,ch_z+3,0xFF8C00],
+
+    [ch_x+1,ch_y+8,ch_z+2,0xFF8C00],
+    [ch_x+2,ch_y+8,ch_z+2,0xFF8C00],
+    [ch_x+4,ch_y+8,ch_z+2,0xFF8C00],
+    [ch_x+5,ch_y+8,ch_z+2,0xFF8C00],
+
+    [ch_x+2,ch_y+8,ch_z+1,0xFF8C00],
+    [ch_x+3,ch_y+8,ch_z+1,0xFF8C00],
+    [ch_x+4,ch_y+8,ch_z+1,0xFF8C00],
+
+    [ch_x+2,ch_y+8,ch_z+0,0xFF8C00],
+    [ch_x+3,ch_y+8,ch_z+0,0xFF8C00],
+    [ch_x+4,ch_y+8,ch_z+0,0xFF8C00],
+
+    // Part 5 - Layer 2
+    [ch_x+2,ch_y+9,ch_z+8,0xFF8C00],
+    [ch_x+3,ch_y+9,ch_z+8,0xFF8C00],
+    [ch_x+4,ch_y+9,ch_z+8,0xFF8C00],
+
+    [ch_x+1,ch_y+9,ch_z+7,0xFF8C00],
+    [ch_x+2,ch_y+9,ch_z+7,0xFF8C00],
+    [ch_x+3,ch_y+9,ch_z+7,0xFF8C00],
+    [ch_x+4,ch_y+9,ch_z+7,0xFF8C00],
+    [ch_x+5,ch_y+9,ch_z+7,0xFF8C00],
+
+    [ch_x+0,ch_y+9,ch_z+6,0xFF8C00],
+    [ch_x+1,ch_y+9,ch_z+6,0xFF8C00],
+    [ch_x+5,ch_y+9,ch_z+6,0xFF8C00],
+    [ch_x+6,ch_y+9,ch_z+6,0xFF8C00],
+
+    [ch_x+0,ch_y+9,ch_z+5,0x000080],
+    [ch_x+1,ch_y+9,ch_z+5,0xFF8C00],
+    [ch_x+2,ch_y+9,ch_z+5,0xFF8C00],
+    [ch_x+4,ch_y+9,ch_z+5,0xFF8C00],
+    [ch_x+5,ch_y+9,ch_z+5,0xFF8C00],
+    [ch_x+6,ch_y+9,ch_z+5,0x000080],
+
+    [ch_x+0,ch_y+9,ch_z+4,0xFF8C00],
+    [ch_x+1,ch_y+9,ch_z+4,0xFF8C00],
+    [ch_x+5,ch_y+9,ch_z+4,0xFF8C00],
+    [ch_x+6,ch_y+9,ch_z+4,0xFF8C00],
+
+    [ch_x+0,ch_y+9,ch_z+3,0xFF8C00],
+    [ch_x+1,ch_y+9,ch_z+3,0xFF8C00],
+    [ch_x+5,ch_y+9,ch_z+3,0xFF8C00],
+    [ch_x+6,ch_y+9,ch_z+3,0xFF8C00],
+
+    [ch_x+1,ch_y+9,ch_z+2,0xFF8C00],
+    [ch_x+2,ch_y+9,ch_z+2,0xFF8C00],
+    [ch_x+3,ch_y+9,ch_z+2,0xFF8C00],
+    [ch_x+4,ch_y+9,ch_z+2,0xFF8C00],
+    [ch_x+5,ch_y+9,ch_z+2,0xFF8C00],
+
+    [ch_x+2,ch_y+9,ch_z+1,0xFF8C00],
+    [ch_x+3,ch_y+9,ch_z+1,0xFF8C00],
+    [ch_x+4,ch_y+9,ch_z+1,0xFF8C00],
+
+    // Part 6 - Layer 1
+    [ch_x+2,ch_y+10,ch_z+7,0xFF8C00],
+    [ch_x+3,ch_y+10,ch_z+7,0xFF8C00],
+    [ch_x+4,ch_y+10,ch_z+7,0xFF8C00],
+
+    [ch_x+1,ch_y+10,ch_z+6,0xFF8C00],
+    [ch_x+2,ch_y+10,ch_z+6,0xFF8C00],
+    [ch_x+4,ch_y+10,ch_z+6,0xFF8C00],
+    [ch_x+5,ch_y+10,ch_z+6,0xFF8C00],
+
+    [ch_x+0,ch_y+10,ch_z+5,0xFFFFFF],
+    [ch_x+1,ch_y+10,ch_z+5,0xFF8C00],
+    [ch_x+2,ch_y+10,ch_z+5,0xFF8C00],
+    [ch_x+4,ch_y+10,ch_z+5,0xFF8C00],
+    [ch_x+5,ch_y+10,ch_z+5,0xFF8C00],
+    [ch_x+6,ch_y+10,ch_z+5,0xFFFFFF],
+
+    [ch_x+0,ch_y+10,ch_z+4,0xFF8C00],
+    [ch_x+1,ch_y+10,ch_z+4,0xFF8C00],
+    [ch_x+2,ch_y+10,ch_z+4,0xFF8C00],
+    [ch_x+4,ch_y+10,ch_z+4,0xFF8C00],
+    [ch_x+5,ch_y+10,ch_z+4,0xFF8C00],
+    [ch_x+6,ch_y+10,ch_z+4,0xFF8C00],
+
+    [ch_x+1,ch_y+10,ch_z+3,0xFF8C00],
+    [ch_x+2,ch_y+10,ch_z+3,0xFF8C00],
+    [ch_x+4,ch_y+10,ch_z+3,0xFF8C00],
+    [ch_x+5,ch_y+10,ch_z+3,0xFF8C00],
+
+    [ch_x+2,ch_y+10,ch_z+2,0xFF8C00],
+    [ch_x+3,ch_y+10,ch_z+2,0xFF8C00],
+    [ch_x+4,ch_y+10,ch_z+2,0xFF8C00],
+
+    [ch_x+2,ch_y+10,ch_z+1,0xFF8C00],
+    [ch_x+3,ch_y+10,ch_z+1,0xFF8C00],
+    [ch_x+4,ch_y+10,ch_z+1,0xFF8C00],
+
+    // Part 6 - Layer 2
+    [ch_x+2,ch_y+11,ch_z+7,0xFF8C00],
+    [ch_x+3,ch_y+11,ch_z+7,0xFF8C00],
+    [ch_x+4,ch_y+11,ch_z+7,0xFF8C00],
+
+    [ch_x+2,ch_y+11,ch_z+6,0xFF8C00],
+    [ch_x+3,ch_y+11,ch_z+6,0xFF8C00],
+    [ch_x+4,ch_y+11,ch_z+6,0xFF8C00],
+
+    [ch_x+1,ch_y+11,ch_z+5,0xFF8C00],
+    [ch_x+2,ch_y+11,ch_z+5,0xFF8C00],
+    [ch_x+4,ch_y+11,ch_z+5,0xFF8C00],
+    [ch_x+5,ch_y+11,ch_z+5,0xFF8C00],
+
+    [ch_x+1,ch_y+11,ch_z+4,0xFF8C00],
+    [ch_x+2,ch_y+11,ch_z+4,0xFF8C00],
+    [ch_x+4,ch_y+11,ch_z+4,0xFF8C00],
+    [ch_x+5,ch_y+11,ch_z+4,0xFF8C00],
+
+    [ch_x+2,ch_y+11,ch_z+3,0xFF8C00],
+    [ch_x+3,ch_y+11,ch_z+3,0xFF8C00],
+    [ch_x+4,ch_y+11,ch_z+3,0xFF8C00],
+
+    [ch_x+2,ch_y+11,ch_z+2,0xFF8C00],
+    [ch_x+3,ch_y+11,ch_z+2,0xFF8C00],
+    [ch_x+4,ch_y+11,ch_z+2,0xFF8C00],
+
+    // Part 7 - Layer 1
+    [ch_x+2,ch_y+12,ch_z+6,0xFF8C00],
+    [ch_x+3,ch_y+12,ch_z+6,0xFF8C00],
+    [ch_x+4,ch_y+12,ch_z+6,0xFF8C00],
+
+    [ch_x+2,ch_y+12,ch_z+5,0xFF8C00],
+    [ch_x+3,ch_y+12,ch_z+5,0xFF8C00],
+    [ch_x+4,ch_y+12,ch_z+5,0xFF8C00],
+
+    [ch_x+2,ch_y+12,ch_z+4,0xFF8C00],
+    [ch_x+3,ch_y+12,ch_z+4,0xFF8C00],
+    [ch_x+4,ch_y+12,ch_z+4,0xFF8C00],
+
+    [ch_x+2,ch_y+12,ch_z+3,0xFF8C00],
+    [ch_x+3,ch_y+12,ch_z+3,0xFF8C00],
+    [ch_x+4,ch_y+12,ch_z+3,0xFF8C00],
+
+    [ch_x+2,ch_y+12,ch_z+2,0xFF8C00],
+    [ch_x+3,ch_y+12,ch_z+2,0xFF8C00],
+    [ch_x+4,ch_y+12,ch_z+2,0xFF8C00],
+
+    // Part 7 - Layer 2
+    [ch_x+2,ch_y+13,ch_z+5,0xFF8C00],
+    [ch_x+3,ch_y+13,ch_z+5,0xFF8C00],
+    [ch_x+4,ch_y+13,ch_z+5,0xFF8C00],
+
+    [ch_x+2,ch_y+13,ch_z+4,0xFF8C00],
+    [ch_x+3,ch_y+13,ch_z+4,0xFF8C00],
+    [ch_x+4,ch_y+13,ch_z+4,0xFF8C00],
+
+    [ch_x+2,ch_y+13,ch_z+3,0xFF8C00],
+    [ch_x+3,ch_y+13,ch_z+3,0xFF8C00],
+    [ch_x+4,ch_y+13,ch_z+3,0xFF8C00],
+
+    // Part 9 - Fire
+    [ch_x+2,ch_y+7,ch_z-5,0xFF4500],
+    [ch_x+2,ch_y+7,ch_z-6,0xFF4500],
+    [ch_x+3,ch_y+7,ch_z-6,0xFFFF00],
+    [ch_x+3,ch_y+7,ch_z-5,0xFFFF00],
+
+    [ch_x+2,ch_y+8,ch_z-5,0xFFFF00],
+    [ch_x+2,ch_y+8,ch_z-6,0xFF4500],
+    [ch_x+3,ch_y+8,ch_z-6,0xFF4500],
+    [ch_x+3,ch_y+8,ch_z-5,0xFFFF00],
+
+    [ch_x+2,ch_y+9,ch_z-5,0xFFFF00],
+    [ch_x+2,ch_y+9,ch_z-6,0xFFFF00],
+    [ch_x+3,ch_y+9,ch_z-5,0xFF4500],
+    [ch_x+3,ch_y+9,ch_z-6,0xFF4500],
+    [ch_x+4,ch_y+9,ch_z-5,0xFF4500],
+    [ch_x+4,ch_y+9,ch_z-6,0xFF4500],
+
+    [ch_x+2,ch_y+10,ch_z-5,0xFFFF00],
+    [ch_x+3,ch_y+10,ch_z-5,0xFFFF00],
+    [ch_x+3,ch_y+10,ch_z-6,0xFF4500],
+    [ch_x+4,ch_y+10,ch_z-5,0xFF4500],
+    [ch_x+4,ch_y+10,ch_z-6,0xFF4500],
+
+    [ch_x+3,ch_y+11,ch_z-5,0xFF4500],
+    [ch_x+3,ch_y+11,ch_z-6,0xFF4500],
+
+    [ch_x+3,ch_y+12,ch_z-5,0xFF4500],
+];
