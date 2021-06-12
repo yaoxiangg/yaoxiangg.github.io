@@ -250,7 +250,7 @@
             // gsap.to(cube.position, 1, {y: cube.position.y*cubeGaps+60, ease: Expo.easeOut});
             gsap.to(cube.material, 1, { transparent: true, opacity: 0, ease: Expo.easeOut});
             gsap.to(cube.scale, 1, { x: 0.0, y: 0.0, z: 0.0, ease: Expo.easeOut}, "-=1");
-            var removetimeout = setTimeout(function() { scene.remove(cube); }, 1500);
+            var removetimeout = setTimeout(function() { scene.remove(cube); }, 1000);
             currentTimeout.push(removetimeout);
         }
 
@@ -261,7 +261,8 @@
 
         function moveCube(cube, x, y, z, color) {
             var color_val = new THREE.Color(color);
-            var duration = Math.min(2, 1.4*(1+(x/5.0+y/5.0+z/5.0)));
+            // var duration = Math.min(2, 1.4*(1+(x/5.0+y/5.0+z/5.0)));
+            var duration = 2;
             gsap.to(cube.material, 1, { transparent: true, opacity: 1, ease: Expo.easeOut});
             gsap.to(cube.scale, 1, { x: 1, y: 1, z: 1, ease: Expo.easeOut}, "-=1");
             gsap.to(cube.position, duration, {x: (x-5)*cubeGaps, y: y*cubeGaps, z: (z-5)*cubeGaps, ease: Expo.easeOut});
@@ -287,7 +288,7 @@
             geometry.rotateX(-Math.PI * 0.5);
             const material = new THREE.MeshLambertMaterial( {color: color, side: THREE.DoubleSide} );
             const plane = new THREE.Mesh( geometry, material );
-            plane.position.y = -0.5;//cubeGaps;
+            plane.position.y = -0.5;
             plane.position.x = 0;
             plane.position.z = 0;
             plane.receiveShadow = true;
