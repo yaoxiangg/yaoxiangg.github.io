@@ -145,7 +145,6 @@
         <div class="btn" onclick="showImage('wallx')">WALL X</div>
         <div class="btn" onclick="showImage('wally')">WALL Y</div>
         <div class="btn" onclick="showImage('wallz')">WALL Z</div>
-        <div class="btn" onclick="showImage('weird1')">WEIRD 1</div>
     </div>
     <div class="mobile-menu-btns">
         <div class="btn-round" onclick="showImage('helloworld')">你好世界</div>
@@ -156,7 +155,6 @@
         <div class="btn-round" onclick="showImage('wallx')">WALL X</div>
         <div class="btn-round" onclick="showImage('wally')">WALL Y</div>
         <div class="btn-round" onclick="showImage('wallz')">WALL Z</div>
-        <div class="btn-round" onclick="showImage('weird1')">WEIRD 1</div>
     </div>
 
     <script src="./assets/js/blueprint.js"></script>
@@ -218,6 +216,7 @@
             is_drawing = true;
             var idx = 0;
             var to_remove = [];
+            console.log(image_grid.length);
             scene.traverseVisible( function ( object ) {
                 var geometry = object.geometry;
                 if ( object instanceof THREE.Mesh ) {
@@ -247,26 +246,30 @@
         }
 
         function removeCube(cube) {
-            // gsap.to(cube.position, 1, {y: cube.position.y*cubeGaps+60, ease: Expo.easeOut});
-            gsap.to(cube.material, 1, { transparent: true, opacity: 0, ease: Expo.easeOut});
-            gsap.to(cube.scale, 1, { x: 0.0, y: 0.0, z: 0.0, ease: Expo.easeOut}, "-=1");
+            // Fly from top
+            // gsap.to(cube.position, 1, {y: cube.position.y*cubeGaps+60});
+            gsap.to(cube.material, 1, { transparent: true, opacity: 0});
+            gsap.to(cube.scale, 1, { x: 0.0, y: 0.0, z: 0.0, ease: Power4.easeInOut}, "-=1");
             var removetimeout = setTimeout(function() { scene.remove(cube); }, 1000);
             currentTimeout.push(removetimeout);
         }
 
         function addCube(x, y, z, color) {
-            var cube = drawCube(5,0,5, color);
-            moveCube(cube, x, y, z, color);
+            var color_val = new THREE.Color(color);
+            var cube = drawCube(x,y,z, color);
+            gsap.to(cube.scale, 1, { x: 1, y: 1, z: 1, ease: Power4.easeInOut, delay: 0.5});
+            gsap.to(cube.position, 2, {x: (x-5)*cubeGaps, y: y*cubeGaps, z: (z-5)*cubeGaps, ease: Power4.easeInOut}, "-=2");
+            gsap.to(cube.material, 1, { transparent: true, opacity: 1});
         }
 
         function moveCube(cube, x, y, z, color) {
             var color_val = new THREE.Color(color);
             // var duration = Math.min(2, 1.4*(1+(x/5.0+y/5.0+z/5.0)));
             var duration = 2;
-            gsap.to(cube.material, 1, { transparent: true, opacity: 1, ease: Expo.easeOut});
-            gsap.to(cube.scale, 1, { x: 1, y: 1, z: 1, ease: Expo.easeOut}, "-=1");
-            gsap.to(cube.position, duration, {x: (x-5)*cubeGaps, y: y*cubeGaps, z: (z-5)*cubeGaps, ease: Expo.easeOut});
-            gsap.to(cube.material.color, duration, {r: color_val.r, g: color_val.g, b: color_val.b, ease: Expo.easeOut}, "-=2");
+            gsap.to(cube.position, duration, {x: (x-5)*cubeGaps, y: y*cubeGaps, z: (z-5)*cubeGaps, ease: Power4.easeInOut}, "-=2");
+            gsap.to(cube.scale, 1, { x: 1, y: 1, z: 1,ease: Power4.easeInOut});
+            gsap.to(cube.material, 1, { transparent: true, opacity: 1});
+            gsap.to(cube.material.color, duration, {r: color_val.r, g: color_val.g, b: color_val.b}, "-=2");
         }
 
         function drawCube(x, y, z, color) {
@@ -278,6 +281,9 @@
             mesh.position.z = (z-5)*cubeGaps;
             mesh.castShadow = true; //default is false
             mesh.receiveShadow = false; //default
+            mesh.scale.x = 0.0;
+            mesh.scale.y = 0.0;
+            mesh.scale.z = 0.0;
             scene.add(mesh);
             mesh.cursor = 'pointer';
             return mesh;
@@ -309,7 +315,7 @@
             height / 2, // top
             height / -2, // bottom
             0, // near plane
-            200 // far plane
+            600 // far plane
         );
 
         camera.position.set(50, 50, 50);
@@ -357,11 +363,16 @@
         // Append to DOM
         document.body.appendChild(renderer.domElement);
 
-        function render(){
+        function animate() {
+            requestAnimationFrame( animate );
+            render();
+        }
+
+        function render() {
             renderer.render(scene, camera);
-            requestAnimationFrame(render);
-        };
-        requestAnimationFrame(render);
+        }
+
+        animate();
 
         // Detect Intersects
         var raycaster = new THREE.Raycaster();
@@ -410,9 +421,9 @@
 
             for(var i = 0; i < intersects.length; i++) {
                 if (intersects[i].object.geometry.type == 'BoxGeometry') {
-                    gsap.to(intersects[i].object.rotation, 1, {y: Math.PI*.5, ease: Expo.easeOut});
+                    gsap.to(intersects[i].object.rotation, 1, {y: Math.PI*0.5, ease: Expo.easeOut});
                 }
-                return;
+                break;
             }
         }
         window.addEventListener('touchstart', onTouchStart);
