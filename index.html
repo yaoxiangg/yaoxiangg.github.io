@@ -164,7 +164,7 @@
         console.log(gsap.ticker);
         var currentTimeout = [];
         var cycle_enabled = true;
-        var backgroundColor = 0x707070;
+        var backgroundColor = 0x061822;
         var planeColor = 0xf7f9fb;
         var cubeGaps = 1.05;
 
@@ -328,6 +328,25 @@
         renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.render(scene, camera);
+        
+        // Draw Starry Scene
+        var getRandomParticlePos = (particleCount) => {
+          const arr = new Float32Array(particleCount * 3);
+          for (let i = 0; i < particleCount * 3; i++) {
+            var rand = Math.random();
+            arr[i] = (rand - 0.5) * 300;
+          }
+          return arr;
+        };
+        var geometry = new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(getRandomParticlePos(1000), 3));
+        var geometry2 = new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(getRandomParticlePos(600), 3));
+        var loader = new THREE.TextureLoader();
+        var material = new THREE.PointsMaterial({ size: 1, transparent: true });
+        var material2 = new THREE.PointsMaterial({ size: 3, transparent: true });
+        var cube = new THREE.Points(geometry, material);
+        var big_cube = new THREE.Points(geometry2, material2);
+        scene.add(cube);
+        scene.add(big_cube);
         renderer.setClearColor(backgroundColor); 
 
         // Setup Lights
