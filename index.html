@@ -216,7 +216,6 @@
             is_drawing = true;
             var idx = 0;
             var to_remove = [];
-            console.log(image_grid.length);
             scene.traverseVisible( function ( object ) {
                 var geometry = object.geometry;
                 if ( object instanceof THREE.Mesh ) {
@@ -250,7 +249,7 @@
             // gsap.to(cube.position, 1, {y: cube.position.y*cubeGaps+60});
             gsap.to(cube.material, 1, { transparent: true, opacity: 0});
             gsap.to(cube.scale, 1, { x: 0.0, y: 0.0, z: 0.0, ease: Power4.easeInOut}, "-=1");
-            var removetimeout = setTimeout(function() { scene.remove(cube); }, 1000);
+            var removetimeout = setTimeout(function() { cube.geometry.dispose(); scene.remove(cube); }, 1000);
             currentTimeout.push(removetimeout);
         }
 
@@ -348,6 +347,22 @@
         scene.add(cube);
         scene.add(big_cube);
         renderer.setClearColor(backgroundColor); 
+
+        // Draw Globe
+        const RADIUS = 40;
+        const SEGMENTS = 50;
+        const RINGS = 50;
+        var sphere = new THREE.SphereGeometry( RADIUS, SEGMENTS, RINGS );
+        loader.load( './assets/img/earth.jpg', function ( texture ) {
+            var globe = new THREE.Group();
+            var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
+            var mesh = new THREE.Mesh( sphere, material );
+            globe.position.y = -RADIUS;
+            globe.position.x = 0;
+            globe.position.z = 0;
+            globe.add(mesh);
+            scene.add(globe);
+        } );
 
         // Setup Lights
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -480,7 +495,7 @@
         // Script after Init
 
         // Draw Initial Plane and Cubes
-        drawPlane(0,0,0,planeColor);
+        // drawPlane(0,0,0,planeColor);
 
         function cycleImage(img) {
             var timeout_ms = 4000;
