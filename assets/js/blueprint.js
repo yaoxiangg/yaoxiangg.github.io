@@ -2945,3 +2945,590 @@ var squirtle_grid = [
     [sq_x+3,sq_y+12,sq_z+5,sq_blue],
     [sq_x+4,sq_y+12,sq_z+5,sq_blue],
 ];
+
+
+var bul_x = 2;
+var bul_y = 3;
+var bul_z = 7;
+
+var bul_green = 0x89C893;
+var bul_lightgreen = 0x73AC31;
+var bul_darkgreen = 0x49896F;
+var bul_orange = 0xFF6600;
+var bul_black = 0x333333;
+var bul_red = 0xB74555;
+var bul_white = 0xFFFFFF;
+
+//  #FFFACD lemon
+
+var bulbasaur_grid = [
+    // Part 7 - Leg
+    [bul_x+6,bul_y-2,bul_z-6,bul_green],
+    [bul_x+7,bul_y-2,bul_z-6,bul_green],
+    [bul_x+6,bul_y-2,bul_z-5,bul_green],
+    [bul_x+7,bul_y-2,bul_z-5,bul_green],
+    [bul_x+7,bul_y-1,bul_z-5,bul_darkgreen],
+    [bul_x+6,bul_y-3,bul_z-6,bul_green],
+    [bul_x+7,bul_y-3,bul_z-6,bul_green],
+    [bul_x+6,bul_y-3,bul_z-5,bul_green],
+    [bul_x+7,bul_y-3,bul_z-5,bul_green],
+    [bul_x+6,bul_y-3,bul_z-4,bul_green],
+    [bul_x+7,bul_y-3,bul_z-4,bul_green],
+
+    [bul_x-1,bul_y-1,bul_z-6,bul_darkgreen],
+    [bul_x+0,bul_y-1,bul_z-6,bul_darkgreen],
+    [bul_x-1,bul_y-2,bul_z-6,bul_green],
+    [bul_x+0,bul_y-2,bul_z-6,bul_green],
+    [bul_x-1,bul_y-2,bul_z-5,bul_green],
+    [bul_x+0,bul_y-2,bul_z-5,bul_green],
+    [bul_x+0,bul_y-1,bul_z-5,bul_green],
+    [bul_x-1,bul_y-3,bul_z-6,bul_green],
+    [bul_x+0,bul_y-3,bul_z-6,bul_green],
+    [bul_x-1,bul_y-3,bul_z-5,bul_green],
+    [bul_x+0,bul_y-3,bul_z-5,bul_green],
+    [bul_x-1,bul_y-3,bul_z-4,bul_green],
+    [bul_x+0,bul_y-3,bul_z-4,bul_green],
+
+    [bul_x+6,bul_y-2,bul_z-1,bul_green],
+    [bul_x+7,bul_y-2,bul_z-1,bul_green],
+    [bul_x+6,bul_y-2,bul_z-0,bul_green],
+    [bul_x+7,bul_y-2,bul_z-0,bul_green],
+    [bul_x+7,bul_y-1,bul_z-0,bul_darkgreen],
+    [bul_x+6,bul_y-3,bul_z-1,bul_green],
+    [bul_x+7,bul_y-3,bul_z-1,bul_green],
+    [bul_x+6,bul_y-3,bul_z-0,bul_green],
+    [bul_x+7,bul_y-3,bul_z-0,bul_green],
+    [bul_x+6,bul_y-3,bul_z+1,bul_green],
+    [bul_x+7,bul_y-3,bul_z+1,bul_green],
+
+
+    [bul_x-1,bul_y-2,bul_z+0,bul_darkgreen],
+    [bul_x+0,bul_y-2,bul_z+0,bul_green],
+    [bul_x-1,bul_y-2,bul_z+1,bul_darkgreen],
+    [bul_x+0,bul_y-2,bul_z+1,bul_green],
+    [bul_x-1,bul_y-3,bul_z+0,bul_green],
+    [bul_x+0,bul_y-3,bul_z+0,bul_green],
+    [bul_x-1,bul_y-3,bul_z+1,bul_green],
+    [bul_x+0,bul_y-3,bul_z+1,bul_green],
+    [bul_x-1,bul_y-3,bul_z+2,bul_green],
+    [bul_x+0,bul_y-3,bul_z+2,bul_green],
+
+    // Part 6
+    [bul_x+2,bul_y-2,bul_z+1,bul_green],
+    [bul_x+3,bul_y-2,bul_z+1,bul_green],
+    [bul_x+4,bul_y-2,bul_z+1,bul_green],
+
+    [bul_x+2,bul_y-2,bul_z+0,bul_green],
+    [bul_x+3,bul_y-2,bul_z+0,bul_green],
+    [bul_x+4,bul_y-2,bul_z+0,bul_green],
+
+    [bul_x+1,bul_y-2,bul_z-1,bul_green],
+    [bul_x+2,bul_y-2,bul_z-1,bul_green],
+    [bul_x+3,bul_y-2,bul_z-1,bul_green],
+    [bul_x+4,bul_y-2,bul_z-1,bul_green],
+    [bul_x+5,bul_y-2,bul_z-1,bul_green],
+
+    [bul_x+1,bul_y-2,bul_z-2,bul_green],
+    [bul_x+2,bul_y-2,bul_z-2,bul_green],
+    [bul_x+3,bul_y-2,bul_z-2,bul_green],
+    [bul_x+4,bul_y-2,bul_z-2,bul_green],
+    [bul_x+5,bul_y-2,bul_z-2,bul_green],
+
+    
+    [bul_x+1,bul_y-2,bul_z-3,bul_green],
+    [bul_x+2,bul_y-2,bul_z-3,bul_green],
+    [bul_x+3,bul_y-2,bul_z-3,bul_green],
+    [bul_x+4,bul_y-2,bul_z-3,bul_green],
+    [bul_x+5,bul_y-2,bul_z-3,bul_green],
+    
+    [bul_x+1,bul_y-2,bul_z-4,bul_green],
+    [bul_x+2,bul_y-2,bul_z-4,bul_green],
+    [bul_x+3,bul_y-2,bul_z-4,bul_green],
+    [bul_x+4,bul_y-2,bul_z-4,bul_green],
+    [bul_x+5,bul_y-2,bul_z-4,bul_green],
+
+    [bul_x+2,bul_y-2,bul_z-5,bul_green],
+    [bul_x+3,bul_y-2,bul_z-5,bul_green],
+    [bul_x+4,bul_y-2,bul_z-5,bul_green],
+
+    // Part 1 - Layer 1
+    [bul_x+2,bul_y-1,bul_z+3,bul_green],
+    [bul_x+3,bul_y-1,bul_z+3,bul_green],
+    [bul_x+4,bul_y-1,bul_z+3,bul_green],
+
+    [bul_x+1,bul_y-1,bul_z+2,bul_green],
+    [bul_x+2,bul_y-1,bul_z+2,bul_green],
+    [bul_x+3,bul_y-1,bul_z+2,bul_green],
+    [bul_x+4,bul_y-1,bul_z+2,bul_green],
+    [bul_x+5,bul_y-1,bul_z+2,bul_green],
+
+    [bul_x+1,bul_y-1,bul_z+1,bul_green],
+    [bul_x+2,bul_y-1,bul_z+1,bul_green],
+    [bul_x+3,bul_y-1,bul_z+1,bul_green],
+    [bul_x+4,bul_y-1,bul_z+1,bul_green],
+    [bul_x+5,bul_y-1,bul_z+1,bul_green],
+
+    [bul_x+1,bul_y-1,bul_z+0,bul_green],
+    [bul_x+2,bul_y-1,bul_z+0,bul_green],
+    [bul_x+3,bul_y-1,bul_z+0,bul_green],
+    [bul_x+4,bul_y-1,bul_z+0,bul_green],
+    [bul_x+5,bul_y-1,bul_z+0,bul_green],
+
+    [bul_x+1,bul_y-1,bul_z-1,bul_green],
+    [bul_x+2,bul_y-1,bul_z-1,bul_green],
+    [bul_x+3,bul_y-1,bul_z-1,bul_green],
+    [bul_x+4,bul_y-1,bul_z-1,bul_green],
+    [bul_x+5,bul_y-1,bul_z-1,bul_green],
+
+    [bul_x+2,bul_y+0,bul_z+4,bul_green],
+    [bul_x+3,bul_y+0,bul_z+4,bul_green],
+    [bul_x+4,bul_y+0,bul_z+4,bul_green],
+
+    [bul_x+1,bul_y+0,bul_z+3,bul_green],
+    [bul_x+2,bul_y+0,bul_z+3,bul_green],
+    [bul_x+3,bul_y+0,bul_z+3,bul_green],
+    [bul_x+4,bul_y+0,bul_z+3,bul_green],
+    [bul_x+5,bul_y+0,bul_z+3,bul_green],
+
+    [bul_x+0,bul_y+0,bul_z+2,bul_green],
+    [bul_x+1,bul_y+0,bul_z+2,bul_green],
+    [bul_x+2,bul_y+0,bul_z+2,bul_green],
+    [bul_x+3,bul_y+0,bul_z+2,bul_green],
+    [bul_x+4,bul_y+0,bul_z+2,bul_green],
+    [bul_x+5,bul_y+0,bul_z+2,bul_green],
+    [bul_x+6,bul_y+0,bul_z+2,bul_green],
+
+    [bul_x+2,bul_y+0,bul_z+1,bul_green],
+    [bul_x+3,bul_y+0,bul_z+1,bul_green],
+    [bul_x+4,bul_y+0,bul_z+1,bul_green],
+
+
+    [bul_x+2,bul_y+0,bul_z-1,bul_green],
+    [bul_x+3,bul_y+0,bul_z-1,bul_green],
+    [bul_x+4,bul_y+0,bul_z-1,bul_green],
+    [bul_x+5,bul_y+0,bul_z-1,bul_green],
+    [bul_x+6,bul_y+0,bul_z-1,bul_green],
+
+    [bul_x+2,bul_y+0,bul_z-2,bul_green],
+    [bul_x+3,bul_y+0,bul_z-2,bul_green],
+    [bul_x+4,bul_y+0,bul_z-2,bul_green],
+    [bul_x+5,bul_y+0,bul_z-2,bul_green],
+    [bul_x+6,bul_y+0,bul_z-2,bul_green],
+
+    [bul_x+0,bul_y+0,bul_z-3,bul_darkgreen],
+    [bul_x+1,bul_y+0,bul_z-3,bul_darkgreen],
+    [bul_x+5,bul_y+0,bul_z-3,bul_green],
+    [bul_x+6,bul_y+0,bul_z-3,bul_green],
+
+    [bul_x+0,bul_y+0,bul_z-4,bul_darkgreen],
+    [bul_x+1,bul_y+0,bul_z-4,bul_darkgreen],
+    [bul_x+5,bul_y+0,bul_z-4,bul_green],
+    [bul_x+6,bul_y+0,bul_z-4,bul_green],
+
+    [bul_x+0,bul_y+0,bul_z-5,bul_green],
+    [bul_x+1,bul_y+0,bul_z-5,bul_lightgreen],
+    [bul_x+2,bul_y+0,bul_z-5,bul_lightgreen],
+    [bul_x+3,bul_y+0,bul_z-5,bul_lightgreen],
+    [bul_x+4,bul_y+0,bul_z-5,bul_lightgreen],
+    [bul_x+5,bul_y+0,bul_z-5,bul_lightgreen],
+    [bul_x+6,bul_y+0,bul_z-5,bul_green],
+
+    [bul_x+2,bul_y+0,bul_z-6,bul_lightgreen],
+    [bul_x+3,bul_y+0,bul_z-6,bul_lightgreen],
+    [bul_x+4,bul_y+0,bul_z-6,bul_lightgreen],
+
+    [bul_x+0,bul_y-1,bul_z-2,bul_green],
+    [bul_x+1,bul_y-1,bul_z-2,bul_green],
+    [bul_x+2,bul_y-1,bul_z-2,bul_green],
+    [bul_x+4,bul_y-1,bul_z-2,bul_green],
+    [bul_x+5,bul_y-1,bul_z-2,bul_green],
+    [bul_x+6,bul_y-1,bul_z-2,bul_green],
+
+    [bul_x+6,bul_y-1,bul_z-1,bul_green],
+    [bul_x+7,bul_y-1,bul_z-1,bul_green],
+    [bul_x+6,bul_y-1,bul_z+0,bul_green],
+
+    [bul_x+0,bul_y-1,bul_z-3,bul_green],
+    [bul_x+1,bul_y-1,bul_z-3,bul_green],
+    [bul_x+2,bul_y-1,bul_z-3,bul_green],
+    [bul_x+4,bul_y-1,bul_z-3,bul_green],
+    [bul_x+5,bul_y-1,bul_z-3,bul_green],
+    [bul_x+6,bul_y-1,bul_z-3,bul_green],
+
+    [bul_x+0,bul_y-1,bul_z-4,bul_green],
+    [bul_x+1,bul_y-1,bul_z-4,bul_green],
+    [bul_x+2,bul_y-1,bul_z-4,bul_green],
+    [bul_x+4,bul_y-1,bul_z-4,bul_green],
+    [bul_x+5,bul_y-1,bul_z-4,bul_green],
+    [bul_x+6,bul_y-1,bul_z-4,bul_green],
+
+    [bul_x-1,bul_y-1,bul_z-5,bul_green],
+    [bul_x+0,bul_y-1,bul_z-5,bul_green],
+    [bul_x+1,bul_y-1,bul_z-5,bul_green],
+    [bul_x+2,bul_y-1,bul_z-5,bul_green],
+    [bul_x+4,bul_y-1,bul_z-5,bul_green],
+    [bul_x+5,bul_y-1,bul_z-5,bul_green],
+    [bul_x+6,bul_y-1,bul_z-5,bul_green],
+
+    [bul_x+2,bul_y-1,bul_z-6,bul_green],
+    [bul_x+3,bul_y-1,bul_z-6,bul_green],
+    [bul_x+4,bul_y-1,bul_z-6,bul_green],
+    [bul_x+6,bul_y-1,bul_z-6,bul_green],
+    [bul_x+7,bul_y-1,bul_z-6,bul_green],
+
+    // Part 2
+    [bul_x+5,bul_y+0,bul_z+0,bul_green],
+    [bul_x+6,bul_y+0,bul_z+0,bul_green],
+    [bul_x+5,bul_y+0,bul_z+1,bul_green],
+    [bul_x+6,bul_y+0,bul_z+1,bul_green],
+
+    [bul_x+0,bul_y+0,bul_z-2,bul_green],
+    [bul_x+1,bul_y+0,bul_z-2,bul_green],
+    [bul_x+0,bul_y+0,bul_z-1,bul_green],
+    [bul_x+1,bul_y+0,bul_z-1,bul_green],
+    [bul_x+0,bul_y+0,bul_z+0,bul_green],
+    [bul_x+1,bul_y+0,bul_z+0,bul_green],
+    [bul_x+0,bul_y+0,bul_z+1,bul_green],
+    [bul_x+1,bul_y+0,bul_z+1,bul_green],
+
+    [bul_x-1,bul_y-1,bul_z+0,bul_green],
+    [bul_x+0,bul_y-1,bul_z+0,bul_green],
+    [bul_x-1,bul_y-1,bul_z+1,bul_green],
+    [bul_x+0,bul_y-1,bul_z+1,bul_green],
+
+    // Part 3 - Layer 1
+    [bul_x+2,bul_y+1,bul_z+4,bul_green],
+    [bul_x+3,bul_y+1,bul_z+4,bul_green],
+    [bul_x+4,bul_y+1,bul_z+4,bul_green],
+
+    [bul_x+1,bul_y+1,bul_z+3,bul_red],
+    [bul_x+2,bul_y+1,bul_z+3,bul_red],
+    [bul_x+4,bul_y+1,bul_z+3,bul_red],
+    [bul_x+5,bul_y+1,bul_z+3,bul_red],
+
+    [bul_x+0,bul_y+1,bul_z+2,bul_green],
+    [bul_x+1,bul_y+1,bul_z+2,bul_green],
+    [bul_x+2,bul_y+1,bul_z+2,bul_green],
+    [bul_x+4,bul_y+1,bul_z+2,bul_green],
+    [bul_x+5,bul_y+1,bul_z+2,bul_green],
+    [bul_x+6,bul_y+1,bul_z+2,bul_green],
+
+    [bul_x-1,bul_y+1,bul_z+1,bul_green],
+    [bul_x+0,bul_y+1,bul_z+1,bul_green],
+    [bul_x+6,bul_y+1,bul_z+1,bul_green],
+    [bul_x+7,bul_y+1,bul_z+1,bul_green],
+
+    [bul_x-1,bul_y+1,bul_z+0,bul_green],
+    [bul_x+0,bul_y+1,bul_z+0,bul_green],
+    [bul_x+6,bul_y+1,bul_z+0,bul_green],
+    [bul_x+7,bul_y+1,bul_z+0,bul_green],
+
+    [bul_x+0,bul_y+1,bul_z-1,bul_green],
+    [bul_x+1,bul_y+1,bul_z-1,bul_green],
+    [bul_x+2,bul_y+1,bul_z-1,bul_green],
+    [bul_x+3,bul_y+1,bul_z-1,bul_green],
+    [bul_x+4,bul_y+1,bul_z-1,bul_green],
+    [bul_x+5,bul_y+1,bul_z-1,bul_green],
+    [bul_x+6,bul_y+1,bul_z-1,bul_darkgreen],
+
+    [bul_x+0,bul_y+1,bul_z-2,bul_green],
+    [bul_x+1,bul_y+1,bul_z-2,bul_lightgreen],
+    [bul_x+2,bul_y+1,bul_z-2,bul_lightgreen],
+    [bul_x+4,bul_y+1,bul_z-2,bul_lightgreen],
+    [bul_x+5,bul_y+1,bul_z-2,bul_lightgreen],
+    [bul_x+6,bul_y+1,bul_z-2,bul_darkgreen],
+
+    [bul_x+1,bul_y+1,bul_z-3,bul_lightgreen],
+    [bul_x+2,bul_y+1,bul_z-3,bul_lightgreen],
+    [bul_x+4,bul_y+1,bul_z-3,bul_lightgreen],
+    [bul_x+5,bul_y+1,bul_z-3,bul_lightgreen],
+
+    [bul_x+0,bul_y+1,bul_z-4,bul_lightgreen],
+    [bul_x+1,bul_y+1,bul_z-4,bul_lightgreen],
+    [bul_x+2,bul_y+1,bul_z-4,bul_lightgreen],
+    [bul_x+4,bul_y+1,bul_z-4,bul_lightgreen],
+    [bul_x+5,bul_y+1,bul_z-4,bul_lightgreen],
+    [bul_x+6,bul_y+1,bul_z-4,bul_lightgreen],
+
+    [bul_x+0,bul_y+1,bul_z-5,bul_lightgreen],
+    [bul_x+1,bul_y+1,bul_z-5,bul_lightgreen],
+    [bul_x+2,bul_y+1,bul_z-5,bul_lightgreen],
+    [bul_x+4,bul_y+1,bul_z-5,bul_lightgreen],
+    [bul_x+5,bul_y+1,bul_z-5,bul_lightgreen],
+    [bul_x+6,bul_y+1,bul_z-5,bul_lightgreen],
+
+
+    [bul_x+1,bul_y+1,bul_z-6,bul_lightgreen],
+    [bul_x+2,bul_y+1,bul_z-6,bul_lightgreen],
+    [bul_x+3,bul_y+1,bul_z-6,bul_lightgreen],
+    [bul_x+4,bul_y+1,bul_z-6,bul_lightgreen],
+    [bul_x+5,bul_y+1,bul_z-6,bul_lightgreen],
+
+    [bul_x+3,bul_y+1,bul_z-7,bul_lightgreen],
+
+    // Part 3 - Layer 2
+    [bul_x+2,bul_y+2,bul_z+4,bul_green],
+    [bul_x+3,bul_y+2,bul_z+4,bul_green],
+    [bul_x+4,bul_y+2,bul_z+4,bul_darkgreen],
+
+    [bul_x+1,bul_y+2,bul_z+3,bul_white],
+    [bul_x+2,bul_y+2,bul_z+3,bul_green],
+    [bul_x+3,bul_y+2,bul_z+3,bul_green],
+    [bul_x+4,bul_y+2,bul_z+3,bul_darkgreen],
+    [bul_x+5,bul_y+2,bul_z+3,bul_white],
+
+    [bul_x+0,bul_y+2,bul_z+2,bul_green],
+    [bul_x+1,bul_y+2,bul_z+2,bul_green],
+    [bul_x+2,bul_y+2,bul_z+2,bul_green],
+    [bul_x+3,bul_y+2,bul_z+2,bul_green],
+    [bul_x+4,bul_y+2,bul_z+2,bul_green],
+    [bul_x+5,bul_y+2,bul_z+2,bul_green],
+    [bul_x+6,bul_y+2,bul_z+2,bul_green],
+
+    [bul_x-1,bul_y+2,bul_z+1,bul_green],
+    [bul_x+0,bul_y+2,bul_z+1,bul_green],
+    [bul_x+1,bul_y+2,bul_z+1,bul_green],
+    [bul_x+5,bul_y+2,bul_z+1,bul_green],
+    [bul_x+6,bul_y+2,bul_z+1,bul_green],
+    [bul_x+7,bul_y+2,bul_z+1,bul_green],
+
+    [bul_x-1,bul_y+2,bul_z+0,bul_green],
+    [bul_x+0,bul_y+2,bul_z+0,bul_green],
+    [bul_x+1,bul_y+2,bul_z+0,bul_green],
+    [bul_x+5,bul_y+2,bul_z+0,bul_green],
+    [bul_x+6,bul_y+2,bul_z+0,bul_green],
+    [bul_x+7,bul_y+2,bul_z+0,bul_green],
+
+    [bul_x+0,bul_y+2,bul_z-1,bul_green],
+    [bul_x+1,bul_y+2,bul_z-1,bul_green],
+    [bul_x+2,bul_y+2,bul_z-1,bul_lightgreen],
+    [bul_x+3,bul_y+2,bul_z-1,bul_lightgreen],
+    [bul_x+4,bul_y+2,bul_z-1,bul_lightgreen],
+    [bul_x+5,bul_y+2,bul_z-1,bul_green],
+    [bul_x+6,bul_y+2,bul_z-1,bul_green],
+
+    [bul_x+1,bul_y+2,bul_z-2,bul_lightgreen],
+    [bul_x+2,bul_y+2,bul_z-2,bul_lightgreen],
+    [bul_x+3,bul_y+2,bul_z-2,bul_lightgreen],
+    [bul_x+4,bul_y+2,bul_z-2,bul_lightgreen],
+    [bul_x+5,bul_y+2,bul_z-2,bul_lightgreen],
+
+    [bul_x+0,bul_y+2,bul_z-3,bul_lightgreen],
+    [bul_x+1,bul_y+2,bul_z-3,bul_lightgreen],
+    [bul_x+2,bul_y+2,bul_z-3,bul_lightgreen],
+    [bul_x+4,bul_y+2,bul_z-3,bul_lightgreen],
+    [bul_x+5,bul_y+2,bul_z-3,bul_lightgreen],
+    [bul_x+6,bul_y+2,bul_z-3,bul_lightgreen],
+
+    [bul_x+0,bul_y+2,bul_z-4,bul_lightgreen],
+    [bul_x+1,bul_y+2,bul_z-4,bul_lightgreen],
+    [bul_x+2,bul_y+2,bul_z-4,bul_lightgreen],
+    [bul_x+4,bul_y+2,bul_z-4,bul_lightgreen],
+    [bul_x+5,bul_y+2,bul_z-4,bul_lightgreen],
+    [bul_x+6,bul_y+2,bul_z-4,bul_lightgreen],
+
+    [bul_x+0,bul_y+2,bul_z-5,bul_lightgreen],
+    [bul_x+1,bul_y+2,bul_z-5,bul_lightgreen],
+    [bul_x+2,bul_y+2,bul_z-5,bul_lightgreen],
+    [bul_x+4,bul_y+2,bul_z-5,bul_lightgreen],
+    [bul_x+5,bul_y+2,bul_z-5,bul_lightgreen],
+    [bul_x+6,bul_y+2,bul_z-5,bul_lightgreen],
+
+    [bul_x+1,bul_y+2,bul_z-6,bul_lightgreen],
+    [bul_x+2,bul_y+2,bul_z-6,bul_lightgreen],
+    [bul_x+3,bul_y+2,bul_z-6,bul_lightgreen],
+    [bul_x+4,bul_y+2,bul_z-6,bul_lightgreen],
+    [bul_x+5,bul_y+2,bul_z-6,bul_lightgreen],
+
+    [bul_x+2,bul_y+2,bul_z-7,bul_lightgreen],
+    [bul_x+3,bul_y+2,bul_z-7,bul_lightgreen],
+    [bul_x+4,bul_y+2,bul_z-7,bul_lightgreen],
+
+    // Part 4 - Layer 1
+    [bul_x+2,bul_y+3,bul_z+4,bul_darkgreen],
+    [bul_x+3,bul_y+3,bul_z+4,bul_green],
+    [bul_x+4,bul_y+3,bul_z+4,bul_green],
+
+    [bul_x+1,bul_y+3,bul_z+3,bul_green],
+    [bul_x+2,bul_y+3,bul_z+3,bul_darkgreen],
+    [bul_x+3,bul_y+3,bul_z+3,bul_green],
+    [bul_x+4,bul_y+3,bul_z+3,bul_green],
+    [bul_x+5,bul_y+3,bul_z+3,bul_green],
+
+    [bul_x+0,bul_y+3,bul_z+2,bul_green],
+    [bul_x+1,bul_y+3,bul_z+2,bul_green],
+    [bul_x+2,bul_y+3,bul_z+2,bul_green],
+    [bul_x+3,bul_y+3,bul_z+2,bul_green],
+    [bul_x+4,bul_y+3,bul_z+2,bul_green],
+    [bul_x+5,bul_y+3,bul_z+2,bul_green],
+    [bul_x+6,bul_y+3,bul_z+2,bul_green],
+
+    [bul_x-1,bul_y+3,bul_z+1,bul_green],
+    [bul_x+0,bul_y+3,bul_z+1,bul_green],
+    [bul_x+1,bul_y+3,bul_z+1,bul_green],
+    [bul_x+2,bul_y+3,bul_z+1,bul_green],
+    [bul_x+4,bul_y+3,bul_z+1,bul_green],
+    [bul_x+5,bul_y+3,bul_z+1,bul_green],
+    [bul_x+6,bul_y+3,bul_z+1,bul_green],
+    [bul_x+7,bul_y+3,bul_z+1,bul_green],
+
+    [bul_x-1,bul_y+3,bul_z+0,bul_green],
+    [bul_x+0,bul_y+3,bul_z+0,bul_green],
+    [bul_x+1,bul_y+3,bul_z+0,bul_green],
+    [bul_x+2,bul_y+3,bul_z+0,bul_green],
+    [bul_x+4,bul_y+3,bul_z+0,bul_green],
+    [bul_x+5,bul_y+3,bul_z+0,bul_green],
+    [bul_x+6,bul_y+3,bul_z+0,bul_green],
+    [bul_x+7,bul_y+3,bul_z+0,bul_green],
+
+    [bul_x+0,bul_y+3,bul_z-1,bul_green],
+    [bul_x+1,bul_y+3,bul_z-1,bul_green],
+    [bul_x+2,bul_y+3,bul_z-1,bul_green],
+    [bul_x+4,bul_y+3,bul_z-1,bul_green],
+    [bul_x+5,bul_y+3,bul_z-1,bul_green],
+    [bul_x+6,bul_y+3,bul_z-1,bul_green],
+
+    [bul_x+1,bul_y+3,bul_z-2,bul_lightgreen],
+    [bul_x+2,bul_y+3,bul_z-2,bul_lightgreen],
+    [bul_x+4,bul_y+3,bul_z-2,bul_lightgreen],
+    [bul_x+5,bul_y+3,bul_z-2,bul_lightgreen],
+
+    [bul_x+0,bul_y+3,bul_z-2,bul_lightgreen],
+    [bul_x+1,bul_y+3,bul_z-2,bul_lightgreen],
+    [bul_x+2,bul_y+3,bul_z-2,bul_lightgreen],
+    [bul_x+4,bul_y+3,bul_z-2,bul_lightgreen],
+    [bul_x+5,bul_y+3,bul_z-2,bul_lightgreen],
+    [bul_x+6,bul_y+3,bul_z-2,bul_lightgreen],
+
+    [bul_x+0,bul_y+3,bul_z-3,bul_lightgreen],
+    [bul_x+1,bul_y+3,bul_z-3,bul_lightgreen],
+    [bul_x+2,bul_y+3,bul_z-3,bul_lightgreen],
+    [bul_x+4,bul_y+3,bul_z-3,bul_lightgreen],
+    [bul_x+5,bul_y+3,bul_z-3,bul_lightgreen],
+    [bul_x+6,bul_y+3,bul_z-3,bul_lightgreen],
+
+
+    [bul_x+0,bul_y+3,bul_z-4,bul_lightgreen],
+    [bul_x+1,bul_y+3,bul_z-4,bul_lightgreen],
+    [bul_x+2,bul_y+3,bul_z-4,bul_lightgreen],
+    [bul_x+4,bul_y+3,bul_z-4,bul_lightgreen],
+    [bul_x+5,bul_y+3,bul_z-4,bul_lightgreen],
+    [bul_x+6,bul_y+3,bul_z-4,bul_lightgreen],
+
+
+    [bul_x+1,bul_y+3,bul_z-5,bul_lightgreen],
+    [bul_x+2,bul_y+3,bul_z-5,bul_lightgreen],
+    [bul_x+4,bul_y+3,bul_z-5,bul_lightgreen],
+    [bul_x+5,bul_y+3,bul_z-5,bul_lightgreen],
+
+    [bul_x+1,bul_y+3,bul_z-6,bul_lightgreen],
+    [bul_x+2,bul_y+3,bul_z-6,bul_lightgreen],
+    [bul_x+3,bul_y+3,bul_z-6,bul_lightgreen],
+    [bul_x+4,bul_y+3,bul_z-6,bul_lightgreen],
+    [bul_x+5,bul_y+3,bul_z-6,bul_lightgreen],
+
+    [bul_x+2,bul_y+3,bul_z-7,bul_lightgreen],
+    [bul_x+3,bul_y+3,bul_z-7,bul_lightgreen],
+    [bul_x+4,bul_y+3,bul_z-7,bul_lightgreen],
+
+    // Part 4 - Layer 2
+    [bul_x+2,bul_y+4,bul_z+3,bul_green],
+    [bul_x+3,bul_y+4,bul_z+3,bul_darkgreen],
+    [bul_x+4,bul_y+4,bul_z+3,bul_darkgreen],
+
+    [bul_x+1,bul_y+4,bul_z+2,bul_green],
+    [bul_x+2,bul_y+4,bul_z+2,bul_green],
+    [bul_x+3,bul_y+4,bul_z+2,bul_green],
+    [bul_x+4,bul_y+4,bul_z+2,bul_green],
+    [bul_x+5,bul_y+4,bul_z+2,bul_green],
+
+    [bul_x+0,bul_y+4,bul_z+1,bul_green],
+    [bul_x+1,bul_y+4,bul_z+1,bul_green],
+    [bul_x+2,bul_y+4,bul_z+1,bul_green],
+    [bul_x+4,bul_y+4,bul_z+1,bul_green],
+    [bul_x+5,bul_y+4,bul_z+1,bul_green],
+    [bul_x+6,bul_y+4,bul_z+1,bul_green],
+
+    [bul_x+0,bul_y+4,bul_z+0,bul_green],
+    [bul_x+1,bul_y+4,bul_z+0,bul_green],
+    [bul_x+2,bul_y+4,bul_z+0,bul_green],
+    [bul_x+4,bul_y+4,bul_z+0,bul_green],
+    [bul_x+5,bul_y+4,bul_z+0,bul_green],
+    [bul_x+6,bul_y+4,bul_z+0,bul_green],
+
+    [bul_x+1,bul_y+4,bul_z-1,bul_green],
+    [bul_x+2,bul_y+4,bul_z-1,bul_lightgreen],
+    [bul_x+3,bul_y+4,bul_z-1,bul_lightgreen],
+    [bul_x+4,bul_y+4,bul_z-1,bul_lightgreen],
+    [bul_x+5,bul_y+4,bul_z-1,bul_green],
+
+    [bul_x+2,bul_y+4,bul_z-2,bul_lightgreen],
+    [bul_x+3,bul_y+4,bul_z-2,bul_lightgreen],
+    [bul_x+4,bul_y+4,bul_z-2,bul_lightgreen],
+
+    [bul_x+1,bul_y+4,bul_z-3,bul_lightgreen],
+    [bul_x+2,bul_y+4,bul_z-3,bul_lightgreen],
+    [bul_x+3,bul_y+4,bul_z-3,bul_lightgreen],
+    [bul_x+4,bul_y+4,bul_z-3,bul_lightgreen],
+    [bul_x+5,bul_y+4,bul_z-3,bul_lightgreen],
+
+    [bul_x+1,bul_y+4,bul_z-4,bul_lightgreen],
+    [bul_x+2,bul_y+4,bul_z-4,bul_lightgreen],
+    [bul_x+3,bul_y+4,bul_z-4,bul_lightgreen],
+    [bul_x+4,bul_y+4,bul_z-4,bul_lightgreen],
+    [bul_x+5,bul_y+4,bul_z-4,bul_lightgreen],
+
+    [bul_x+1,bul_y+4,bul_z-5,bul_lightgreen],
+    [bul_x+2,bul_y+4,bul_z-5,bul_lightgreen],
+    [bul_x+3,bul_y+4,bul_z-5,bul_lightgreen],
+    [bul_x+4,bul_y+4,bul_z-5,bul_lightgreen],
+    [bul_x+5,bul_y+4,bul_z-5,bul_lightgreen],
+
+    [bul_x+2,bul_y+4,bul_z-6,bul_lightgreen],
+    [bul_x+3,bul_y+4,bul_z-6,bul_lightgreen],
+    [bul_x+4,bul_y+4,bul_z-6,bul_lightgreen],
+
+    [bul_x+3,bul_y+4,bul_z-7,bul_lightgreen],
+
+    // Part 5
+    [bul_x+2,bul_y+5,bul_z+2,bul_green],
+    [bul_x+3,bul_y+5,bul_z+2,bul_green],
+    [bul_x+4,bul_y+5,bul_z+2,bul_green],
+
+    [bul_x+2,bul_y+5,bul_z+1,bul_green],
+    [bul_x+3,bul_y+5,bul_z+1,bul_green],
+    [bul_x+4,bul_y+5,bul_z+1,bul_green],
+
+    [bul_x+0,bul_y+5,bul_z+0,bul_green],
+    [bul_x+1,bul_y+5,bul_z+0,bul_green],
+    [bul_x+2,bul_y+5,bul_z+0,bul_green],
+    [bul_x+3,bul_y+5,bul_z+0,bul_green],
+    [bul_x+4,bul_y+5,bul_z+0,bul_green],
+    [bul_x+5,bul_y+5,bul_z+0,bul_green],
+    [bul_x+6,bul_y+5,bul_z+0,bul_green],
+
+    [bul_x+0,bul_y+6,bul_z+0,bul_green],
+    [bul_x+1,bul_y+6,bul_z+0,bul_green],
+    [bul_x+5,bul_y+6,bul_z+0,bul_green],
+    [bul_x+6,bul_y+6,bul_z+0,bul_green],
+
+    [bul_x+2,bul_y+5,bul_z-1,bul_green],
+    [bul_x+3,bul_y+5,bul_z-1,bul_green],
+    [bul_x+4,bul_y+5,bul_z-1,bul_green],
+
+    [bul_x+3,bul_y+5,bul_z-3,bul_lightgreen],
+
+    [bul_x+2,bul_y+5,bul_z-4,bul_lightgreen],
+    [bul_x+3,bul_y+5,bul_z-4,bul_lightgreen],
+    [bul_x+4,bul_y+5,bul_z-4,bul_lightgreen],
+
+    [bul_x+2,bul_y+5,bul_z-5,bul_lightgreen],
+    [bul_x+3,bul_y+5,bul_z-5,bul_lightgreen],
+    [bul_x+4,bul_y+5,bul_z-5,bul_lightgreen],
+
+    [bul_x+3,bul_y+5,bul_z-6,bul_lightgreen],
+
+    [bul_x+3,bul_y+6,bul_z-5,bul_lightgreen],
+    [bul_x+3,bul_y+6,bul_z-6,bul_lightgreen],
+
+];
