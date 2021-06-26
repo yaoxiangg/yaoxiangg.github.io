@@ -126,17 +126,20 @@
           border-radius: 50%;
         }
 
+        .hide {
+            display: none;
+        }
 
     </style>
 </head>
 
 <body>
-    <h1 class="title">Genique</h1>
-    <label class="switch" for="checkbox">
+    <h1 class="title hud-elem">Genique</h1>
+    <label class="switch hud-elem" for="checkbox">
         <input type="checkbox" id="checkbox"/>
         <div class="slider round" onclick="toggleCycle()"></div>
     </label>
-    <div class="menu-btns">
+    <div class="menu-btns hud-elem">
         <div class="btn" onclick="showImage('helloworld')">你好世界</div>
         <div class="btn" onclick="showImage('cube')">CUBE</div>
         <div class="btn" onclick="showImage('snorlax')">SNORLAX</div>
@@ -146,7 +149,7 @@
         <div class="btn" onclick="showImage('wally')">WALL Y</div>
         <div class="btn" onclick="showImage('wallz')">WALL Z</div>
     </div>
-    <div class="mobile-menu-btns">
+    <div class="mobile-menu-btns hud-elem">
         <div class="btn-round" onclick="showImage('helloworld')">你好世界</div>
         <div class="btn-round" onclick="showImage('cube')">CUBE</div>
         <div class="btn-round" onclick="showImage('snorlax')">SNORLAX</div>
@@ -161,9 +164,11 @@
     <script>
 
         // Global Vars
+        console.log("Hit <space> key to hide/unhide HUD");
         console.log(gsap.ticker);
         var currentTimeout = [];
         var cycle_enabled = false;
+        var hide_hud = false;
         var backgroundColor = 0x061822;
         var planeColor = 0xf7f9fb;
         var cubeGaps = 1.05;
@@ -522,6 +527,17 @@
                     break;
                 case 68:
                     gsap.to(cube.rotation, {y: cube.rotation.y-0.5, ease: Power4.easeInOut});
+                    break;
+                case 32: // space
+                    var hud_elems = document.querySelectorAll('.hud-elem');
+                    for (var i = 0; i < hud_elems.length; i++) {
+                        if (hide_hud) {
+                            hud_elems[i].classList.add("hide");
+                        } else {
+                            hud_elems[i].classList.remove("hide");
+                        }
+                    }
+                    hide_hud = !hide_hud;
                     break;
             }
           };
