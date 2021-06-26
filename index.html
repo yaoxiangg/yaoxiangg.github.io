@@ -133,7 +133,7 @@
 <body>
     <h1 class="title">Genique</h1>
     <label class="switch" for="checkbox">
-        <input type="checkbox" id="checkbox" checked/>
+        <input type="checkbox" id="checkbox"/>
         <div class="slider round" onclick="toggleCycle()"></div>
     </label>
     <div class="menu-btns">
@@ -142,7 +142,7 @@
         <div class="btn" onclick="showImage('snorlax')">SNORLAX</div>
         <div class="btn" onclick="showImage('dratini')">DRATINI</div>
         <div class="btn" onclick="showImage('charmander')">CHARMANDER</div>
-        <div class="btn" onclick="showImage('wallx')">WALL X</div>
+        <div class="btn" onclick="showImage('squirtle')">SQUIRTLE</div>
         <div class="btn" onclick="showImage('wally')">WALL Y</div>
         <div class="btn" onclick="showImage('wallz')">WALL Z</div>
     </div>
@@ -152,7 +152,7 @@
         <div class="btn-round" onclick="showImage('snorlax')">SNORLAX</div>
         <div class="btn-round" onclick="showImage('dratini')">DRATINI</div>
         <div class="btn-round" onclick="showImage('charmander')">CHARMANDER</div>
-        <div class="btn-round" onclick="showImage('wallx')">WALL X</div>
+        <div class="btn-round" onclick="showImage('squirtle')">SQUIRTLE</div>
         <div class="btn-round" onclick="showImage('wally')">WALL Y</div>
         <div class="btn-round" onclick="showImage('wallz')">WALL Z</div>
     </div>
@@ -163,7 +163,7 @@
         // Global Vars
         console.log(gsap.ticker);
         var currentTimeout = [];
-        var cycle_enabled = true;
+        var cycle_enabled = false;
         var backgroundColor = 0x061822;
         var planeColor = 0xf7f9fb;
         var cubeGaps = 1.05;
@@ -204,6 +204,7 @@
                 if (image_name == "cube") { drawImage(full_cube); }
                 if (image_name == "helloworld") { drawImage(helloworld_grid); }
                 if (image_name == "charmander") { drawImage(charmander_grid); }
+                if (image_name == "squirtle") { drawImage(squirtle_grid); }
                 if (cycle_enabled) {
                     cycleImage(0);
                 }
@@ -211,6 +212,7 @@
             
         }
         var is_drawing = false;
+        var group = new THREE.Group();
         function drawImage(image_grid) {
             if (is_drawing) return;
             is_drawing = true;
@@ -239,8 +241,9 @@
             }
 
             var to_add = image_grid.length - idx;
-            for (var c = 0; c < to_add; c++) 
+            for (var c = 0; c < to_add; c++) {
                 addCube(image_grid[idx+c][0], image_grid[idx+c][1], image_grid[idx+c][2], image_grid[idx+c][3]);
+            }
             is_drawing = false;
         }
 
@@ -249,7 +252,7 @@
             // gsap.to(cube.position, 1, {y: cube.position.y*cubeGaps+60});
             gsap.to(cube.material, 1, { transparent: true, opacity: 0});
             gsap.to(cube.scale, 1, { x: 0.0, y: 0.0, z: 0.0, ease: Power4.easeInOut}, "-=1");
-            var removetimeout = setTimeout(function() { cube.geometry.dispose(); scene.remove(cube); }, 1000);
+            var removetimeout = setTimeout(function() { cube.geometry.dispose(); group.remove(cube); scene.remove(cube); }, 1000);
             currentTimeout.push(removetimeout);
         }
 
@@ -259,6 +262,7 @@
             gsap.to(cube.scale, 1, { x: 1, y: 1, z: 1, ease: Power4.easeInOut, delay: 0.5});
             gsap.to(cube.position, 2, {x: (x-5)*cubeGaps, y: y*cubeGaps, z: (z-5)*cubeGaps, ease: Power4.easeInOut}, "-=2");
             gsap.to(cube.material, 1, { transparent: true, opacity: 1});
+            return cube;
         }
 
         function moveCube(cube, x, y, z, color) {
@@ -283,8 +287,9 @@
             mesh.scale.x = 0.0;
             mesh.scale.y = 0.0;
             mesh.scale.z = 0.0;
-            scene.add(mesh);
             mesh.cursor = 'pointer';
+            group.add(mesh);
+            scene.add(group);
             return mesh;
         }
 
@@ -353,14 +358,15 @@
         const SEGMENTS = 50;
         const RINGS = 50;
         var sphere = new THREE.SphereGeometry( RADIUS, SEGMENTS, RINGS );
+        var sphere_mesh;
         loader.load( './assets/img/earth.jpg', function ( texture ) {
             var globe = new THREE.Group();
-            var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
-            var mesh = new THREE.Mesh( sphere, material );
+            var material = new THREE.MeshBasicMaterial( { map: texture } );
+            sphere_mesh = new THREE.Mesh( sphere, material );
             globe.position.y = -RADIUS;
             globe.position.x = 0;
             globe.position.z = 0;
-            globe.add(mesh);
+            globe.add(sphere_mesh);
             scene.add(globe);
         } );
 
@@ -454,8 +460,16 @@
             var intersects = raycaster.intersectObjects(scene.children, true);
 
             for(var i = 0; i < intersects.length; i++) {
+                var final_rot = Math.PI * 0.5;
+                if (intersects[i].object.rotation.y > Math.PI * 0.5) {
+                    final_rot = 0;
+                }
+                var xx = intersects[i].object.rotation.y + Math.PI * 0.5;
                 if (intersects[i].object.geometry.type == 'BoxGeometry') {
-                    gsap.to(intersects[i].object.rotation, 1, {y: Math.PI*0.5, ease: Expo.easeOut});
+                    this.tl = new TimelineMax();
+                    this.tl.to(intersects[i].object.scale, .5, {x: .5, y: .5, z: .5,ease: Expo.easeOut});
+                    this.tl.to(intersects[i].object.rotation, .5, {y: Math.PI*.5, ease: Expo.easeOut});
+                    this.tl.to(intersects[i].object.scale, .5, {x: 1, y: 1, z: 1,ease: Expo.easeOut});;
                 }
                 break;
             }
@@ -492,6 +506,28 @@
             }
             cycle_enabled = !cycle_enabled;
         }
+
+        // Keyboards
+        function setupKeyControls() {
+          document.onkeydown = function(e) {
+          var cube = group;
+            switch (e.keyCode) {
+                case 87: //w
+                    break;
+                // case 83: //s
+                // case 65: //a
+                // case 68: //d
+                case 65:
+                    gsap.to(cube.rotation, {y: cube.rotation.y+0.5, ease: Power4.easeInOut});
+                    break;
+                case 68:
+                    gsap.to(cube.rotation, {y: cube.rotation.y-0.5, ease: Power4.easeInOut});
+                    break;
+            }
+          };
+        }
+        setupKeyControls();
+
         // Script after Init
 
         // Draw Initial Plane and Cubes
@@ -505,7 +541,8 @@
             } 
             var timeout = setTimeout(function() {
                 drawImage(g_grids[img]) 
-                cycleImage((img + 1) % g_grids.length);
+                if (cycle_enabled)
+                    cycleImage((img + 1) % g_grids.length);
             }, timeout_ms);
             currentTimeout.push(timeout);
         }

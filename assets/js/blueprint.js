@@ -2416,3 +2416,532 @@ var charmander_grid = [
 
     [ch_x+3,ch_y+12,ch_z-5,0xFF4500],
 ];
+
+
+var sq_x = 2;
+var sq_y = 1;
+var sq_z = 2;
+
+var sq_blue = 0x87CEFA;
+var sq_beige = 0xFAEBD7;
+var sq_white = 0xFFFFFF;
+var sq_orange = 0xFF6600;
+var sq_black = 0x333333;
+
+//  #FFFACD lemon
+
+var squirtle_grid = [
+    // Part 7 - Legs
+    [sq_x+0,sq_y-1,sq_z+6,sq_blue],
+    [sq_x+1,sq_y-1,sq_z+6,sq_blue],
+    [sq_x+5,sq_y-1,sq_z+6,sq_blue],
+    [sq_x+6,sq_y-1,sq_z+6,sq_blue],
+
+    [sq_x+0,sq_y-1,sq_z+5,sq_blue],
+    [sq_x+1,sq_y-1,sq_z+5,sq_blue],
+    [sq_x+5,sq_y-1,sq_z+5,sq_blue],
+    [sq_x+6,sq_y-1,sq_z+5,sq_blue],
+
+    [sq_x+0,sq_y-1,sq_z+4,sq_blue],
+    [sq_x+1,sq_y-1,sq_z+4,sq_blue],
+    [sq_x+5,sq_y-1,sq_z+4,sq_blue],
+    [sq_x+6,sq_y-1,sq_z+4,sq_blue],
+
+    // Part 1 - Layer 1
+    [sq_x+0,sq_y+0,sq_z+5,sq_blue],
+    [sq_x+1,sq_y+0,sq_z+5,sq_blue],
+    [sq_x+2,sq_y+0,sq_z+5,sq_beige],
+    [sq_x+3,sq_y+0,sq_z+5,sq_beige],
+    [sq_x+4,sq_y+0,sq_z+5,sq_beige],
+    [sq_x+5,sq_y+0,sq_z+5,sq_blue],
+    [sq_x+6,sq_y+0,sq_z+5,sq_blue],
+
+    [sq_x+0,sq_y+0,sq_z+4,sq_blue],
+    [sq_x+1,sq_y+0,sq_z+4,sq_blue],
+    [sq_x+2,sq_y+0,sq_z+4,sq_beige],
+    [sq_x+3,sq_y+0,sq_z+4,sq_beige],
+    [sq_x+4,sq_y+0,sq_z+4,sq_beige],
+    [sq_x+5,sq_y+0,sq_z+4,sq_blue],
+    [sq_x+6,sq_y+0,sq_z+4,sq_blue],
+
+    [sq_x+2,sq_y+0,sq_z+3,sq_blue],
+    [sq_x+3,sq_y+0,sq_z+3,sq_blue],
+    [sq_x+4,sq_y+0,sq_z+3,sq_blue],
+
+    [sq_x+2,sq_y+0,sq_z+2,sq_blue],
+    [sq_x+3,sq_y+0,sq_z+2,sq_blue],
+    [sq_x+4,sq_y+0,sq_z+2,sq_blue],
+
+    [sq_x+3,sq_y+0,sq_z+1,sq_blue],
+
+    [sq_x+3,sq_y+0,sq_z+0,sq_blue],
+
+
+    // Part 1 - Layer 2
+    [sq_x+2,sq_y+1,sq_z+6,sq_beige],
+    [sq_x+3,sq_y+1,sq_z+6,sq_beige],
+    [sq_x+4,sq_y+1,sq_z+6,sq_beige],
+
+    [sq_x+0,sq_y+1,sq_z+5,sq_blue],
+    [sq_x+1,sq_y+1,sq_z+5,sq_blue],
+    [sq_x+2,sq_y+1,sq_z+5,sq_beige],
+    [sq_x+3,sq_y+1,sq_z+5,sq_beige],
+    [sq_x+4,sq_y+1,sq_z+5,sq_beige],
+    [sq_x+5,sq_y+1,sq_z+5,sq_blue],
+    [sq_x+6,sq_y+1,sq_z+5,sq_blue],
+
+    [sq_x+0,sq_y+1,sq_z+4,sq_blue],
+    [sq_x+1,sq_y+1,sq_z+4,sq_blue],
+    [sq_x+2,sq_y+1,sq_z+4,sq_blue],
+    [sq_x+3,sq_y+1,sq_z+4,sq_blue],
+    [sq_x+4,sq_y+1,sq_z+4,sq_blue],
+    [sq_x+5,sq_y+1,sq_z+4,sq_blue],
+    [sq_x+6,sq_y+1,sq_z+4,sq_blue],
+
+    [sq_x+1,sq_y+1,sq_z+3,sq_white],
+    [sq_x+2,sq_y+1,sq_z+3,sq_white],
+    [sq_x+3,sq_y+1,sq_z+3,sq_blue],
+    [sq_x+4,sq_y+1,sq_z+3,sq_white],
+    [sq_x+5,sq_y+1,sq_z+3,sq_white],
+
+    [sq_x+2,sq_y+1,sq_z+2,sq_white],
+    [sq_x+3,sq_y+1,sq_z+2,sq_blue],
+    [sq_x+4,sq_y+1,sq_z+2,sq_white],
+
+    [sq_x+3,sq_y+1,sq_z+1,sq_blue],
+
+    [sq_x+3,sq_y+1,sq_z+0,sq_blue],
+    [sq_x+4,sq_y+1,sq_z+0,sq_blue],
+
+    [sq_x+3,sq_y+1,sq_z-1,sq_blue],
+    [sq_x+4,sq_y+1,sq_z-1,sq_blue],
+
+    // Part 2 - Layer 1
+    [sq_x+2,sq_y+2,sq_z+7,sq_beige],
+    [sq_x+3,sq_y+2,sq_z+7,sq_beige],
+    [sq_x+4,sq_y+2,sq_z+7,sq_beige],
+
+    [sq_x+1,sq_y+2,sq_z+6,sq_beige],
+    [sq_x+2,sq_y+2,sq_z+6,sq_beige],
+    [sq_x+3,sq_y+2,sq_z+6,sq_beige],
+    [sq_x+4,sq_y+2,sq_z+6,sq_beige],
+    [sq_x+5,sq_y+2,sq_z+6,sq_beige],
+
+    [sq_x+1,sq_y+2,sq_z+5,sq_beige],
+    [sq_x+5,sq_y+2,sq_z+5,sq_beige],
+
+    [sq_x+0,sq_y+2,sq_z+4,sq_white],
+    [sq_x+1,sq_y+2,sq_z+4,sq_white],
+    [sq_x+2,sq_y+2,sq_z+4,sq_blue],
+    [sq_x+3,sq_y+2,sq_z+4,sq_blue],
+    [sq_x+4,sq_y+2,sq_z+4,sq_blue],
+    [sq_x+5,sq_y+2,sq_z+4,sq_white],
+    [sq_x+6,sq_y+2,sq_z+4,sq_white],
+
+    [sq_x+0,sq_y+2,sq_z+3,sq_white],
+    [sq_x+1,sq_y+2,sq_z+3,sq_orange],
+    [sq_x+2,sq_y+2,sq_z+3,sq_blue],
+    [sq_x+3,sq_y+2,sq_z+3,sq_blue],
+    [sq_x+4,sq_y+2,sq_z+3,sq_blue],
+    [sq_x+5,sq_y+2,sq_z+3,sq_orange],
+    [sq_x+6,sq_y+2,sq_z+3,sq_white],
+
+    [sq_x+1,sq_y+2,sq_z+2,sq_orange],
+    [sq_x+2,sq_y+2,sq_z+2,sq_orange],
+    [sq_x+4,sq_y+2,sq_z+2,sq_orange],
+    [sq_x+5,sq_y+2,sq_z+2,sq_orange],
+
+    [sq_x+2,sq_y+2,sq_z+1,sq_orange],
+    [sq_x+3,sq_y+2,sq_z+1,sq_blue],
+    [sq_x+4,sq_y+2,sq_z+1,sq_orange],
+
+    [sq_x+3,sq_y+2,sq_z+0,sq_blue],
+    [sq_x+4,sq_y+2,sq_z+0,sq_blue],
+    [sq_x+3,sq_y+2,sq_z-1,sq_blue],
+    [sq_x+4,sq_y+2,sq_z-1,sq_blue],
+    [sq_x+3,sq_y+2,sq_z-2,sq_blue],
+    [sq_x+4,sq_y+2,sq_z-2,sq_blue],
+
+    // Part 2 - Layer 2
+    [sq_x+2,sq_y+3,sq_z+7,sq_beige],
+    [sq_x+3,sq_y+3,sq_z+7,sq_beige],
+    [sq_x+4,sq_y+3,sq_z+7,sq_beige],
+
+    [sq_x+1,sq_y+3,sq_z+6,sq_beige],
+    [sq_x+2,sq_y+3,sq_z+6,sq_beige],
+    [sq_x+4,sq_y+3,sq_z+6,sq_beige],
+    [sq_x+5,sq_y+3,sq_z+6,sq_beige],
+
+    [sq_x+1,sq_y+3,sq_z+5,sq_beige],
+    [sq_x+5,sq_y+3,sq_z+5,sq_beige],
+
+    [sq_x+0,sq_y+3,sq_z+4,sq_white],
+    [sq_x+1,sq_y+3,sq_z+4,sq_beige],
+    [sq_x+5,sq_y+3,sq_z+4,sq_beige],
+    [sq_x+6,sq_y+3,sq_z+4,sq_white],
+
+    [sq_x+1,sq_y+3,sq_z+3,sq_orange],
+    [sq_x+2,sq_y+3,sq_z+3,sq_orange],
+    [sq_x+3,sq_y+3,sq_z+3,sq_orange],
+    [sq_x+4,sq_y+3,sq_z+3,sq_orange],
+    [sq_x+5,sq_y+3,sq_z+3,sq_orange],
+
+    [sq_x+1,sq_y+3,sq_z+2,sq_orange],
+    [sq_x+2,sq_y+3,sq_z+2,sq_orange],
+    [sq_x+3,sq_y+3,sq_z+2,sq_orange],
+    [sq_x+4,sq_y+3,sq_z+2,sq_orange],
+    [sq_x+5,sq_y+3,sq_z+2,sq_orange],
+
+    [sq_x+1,sq_y+3,sq_z+1,sq_orange],
+    [sq_x+2,sq_y+3,sq_z+1,sq_orange],
+    [sq_x+3,sq_y+3,sq_z+1,sq_orange],
+    [sq_x+4,sq_y+3,sq_z+1,sq_orange],
+    [sq_x+5,sq_y+3,sq_z+1,sq_orange],
+
+    [sq_x+2,sq_y+3,sq_z-1,sq_blue],
+    [sq_x+3,sq_y+3,sq_z-1,sq_blue],
+    [sq_x+4,sq_y+3,sq_z-1,sq_blue],
+
+    [sq_x+2,sq_y+3,sq_z-2,sq_blue],
+    [sq_x+3,sq_y+3,sq_z-2,sq_blue],
+    [sq_x+4,sq_y+3,sq_z-2,sq_blue],    
+
+    // Part 3 - Layer 1
+    [sq_x+2,sq_y+4,sq_z+7,sq_beige],
+    [sq_x+3,sq_y+4,sq_z+7,sq_beige],
+    [sq_x+4,sq_y+4,sq_z+7,sq_beige],
+
+    [sq_x+2,sq_y+5,sq_z+8,sq_blue],
+    [sq_x+3,sq_y+5,sq_z+8,sq_blue],
+    [sq_x+4,sq_y+5,sq_z+8,sq_blue],
+    [sq_x+1,sq_y+5,sq_z+7,sq_blue],
+    [sq_x+2,sq_y+5,sq_z+7,sq_blue],
+    [sq_x+3,sq_y+5,sq_z+7,sq_blue],
+    [sq_x+4,sq_y+5,sq_z+7,sq_blue],
+    [sq_x+5,sq_y+5,sq_z+7,sq_blue],
+    [sq_x+0,sq_y+5,sq_z+5,sq_blue],
+    [sq_x+1,sq_y+5,sq_z+5,sq_blue],
+    [sq_x+5,sq_y+5,sq_z+5,sq_blue],
+    [sq_x+6,sq_y+5,sq_z+5,sq_blue],
+
+    [sq_x+1,sq_y+4,sq_z+6,sq_beige],
+    [sq_x+2,sq_y+4,sq_z+6,sq_beige],
+    [sq_x+3,sq_y+4,sq_z+6,sq_beige],
+    [sq_x+4,sq_y+4,sq_z+6,sq_beige],
+    [sq_x+5,sq_y+4,sq_z+6,sq_beige],
+
+    [sq_x+0,sq_y+5,sq_z+6,sq_blue],
+    [sq_x+1,sq_y+5,sq_z+6,sq_blue],
+    [sq_x+5,sq_y+5,sq_z+6,sq_blue],
+    [sq_x+6,sq_y+5,sq_z+6,sq_blue],
+
+
+    [sq_x+0,sq_y+4,sq_z+6,sq_blue],
+    [sq_x-1,sq_y+4,sq_z+6,sq_blue],
+    [sq_x+0,sq_y+4,sq_z+5,sq_blue],
+    [sq_x-1,sq_y+4,sq_z+5,sq_blue],
+
+    [sq_x+6,sq_y+4,sq_z+6,sq_blue],
+    [sq_x+7,sq_y+4,sq_z+6,sq_blue],
+    [sq_x+6,sq_y+4,sq_z+5,sq_blue],
+    [sq_x+7,sq_y+4,sq_z+5,sq_blue],
+
+    [sq_x+0,sq_y+3,sq_z+7,sq_blue],
+    [sq_x-1,sq_y+3,sq_z+7,sq_blue],
+    [sq_x+0,sq_y+3,sq_z+6,sq_blue],
+    [sq_x-1,sq_y+3,sq_z+6,sq_blue],
+
+    [sq_x+6,sq_y+3,sq_z+7,sq_blue],
+    [sq_x+7,sq_y+3,sq_z+7,sq_blue],
+    [sq_x+6,sq_y+3,sq_z+6,sq_blue],
+    [sq_x+7,sq_y+3,sq_z+6,sq_blue],
+
+    [sq_x+0,sq_y+4,sq_z+5,sq_blue],
+    [sq_x+1,sq_y+4,sq_z+5,sq_blue],
+    [sq_x+5,sq_y+4,sq_z+5,sq_blue],
+    [sq_x+6,sq_y+4,sq_z+5,sq_blue],
+
+    [sq_x+0,sq_y+4,sq_z+4,sq_white],
+    [sq_x+1,sq_y+4,sq_z+4,sq_white],
+    [sq_x+5,sq_y+4,sq_z+4,sq_white],
+    [sq_x+6,sq_y+4,sq_z+4,sq_white],
+
+    [sq_x+1,sq_y+4,sq_z+3,sq_orange],
+    [sq_x+2,sq_y+4,sq_z+3,sq_orange],
+    [sq_x+4,sq_y+4,sq_z+3,sq_orange],
+    [sq_x+5,sq_y+4,sq_z+3,sq_orange],
+
+    [sq_x+1,sq_y+4,sq_z+2,sq_orange],
+    [sq_x+2,sq_y+4,sq_z+2,sq_orange],
+    [sq_x+3,sq_y+4,sq_z+2,sq_orange],
+    [sq_x+4,sq_y+4,sq_z+2,sq_orange],
+    [sq_x+5,sq_y+4,sq_z+2,sq_orange],
+
+    [sq_x+1,sq_y+4,sq_z+1,sq_orange],
+    [sq_x+2,sq_y+4,sq_z+1,sq_orange],
+    [sq_x+3,sq_y+4,sq_z+1,sq_orange],
+    [sq_x+4,sq_y+4,sq_z+1,sq_orange],
+    [sq_x+5,sq_y+4,sq_z+1,sq_orange],
+
+    [sq_x+2,sq_y+4,sq_z-1,sq_blue],
+    [sq_x+3,sq_y+4,sq_z-1,sq_blue],
+
+    [sq_x+2,sq_y+4,sq_z-2,sq_blue],
+    [sq_x+3,sq_y+4,sq_z-2,sq_blue],
+
+    [sq_x+0,sq_y+5,sq_z+4,sq_white],
+    [sq_x+1,sq_y+5,sq_z+4,sq_white],
+    [sq_x+5,sq_y+5,sq_z+4,sq_white],
+    [sq_x+6,sq_y+5,sq_z+4,sq_white],
+
+    [sq_x+1,sq_y+5,sq_z+3,sq_orange],
+    [sq_x+2,sq_y+5,sq_z+3,sq_orange],
+    [sq_x+3,sq_y+5,sq_z+3,sq_orange],
+    [sq_x+4,sq_y+5,sq_z+3,sq_orange],
+    [sq_x+5,sq_y+5,sq_z+3,sq_orange],
+
+    [sq_x+1,sq_y+5,sq_z+2,sq_orange],
+    [sq_x+2,sq_y+5,sq_z+2,sq_orange],
+    [sq_x+3,sq_y+5,sq_z+2,sq_orange],
+    [sq_x+4,sq_y+5,sq_z+2,sq_orange],
+    [sq_x+5,sq_y+5,sq_z+2,sq_orange],
+
+    [sq_x+2,sq_y+5,sq_z+1,sq_orange],
+    [sq_x+3,sq_y+5,sq_z+1,sq_orange],
+    [sq_x+4,sq_y+5,sq_z+1,sq_orange],
+
+    // Part 4 - Layer 1
+    [sq_x+2,sq_y+6,sq_z+9,sq_blue],
+    [sq_x+3,sq_y+6,sq_z+9,sq_blue],
+    [sq_x+4,sq_y+6,sq_z+9,sq_blue],
+
+    [sq_x+1,sq_y+6,sq_z+8,sq_blue],
+    [sq_x+2,sq_y+6,sq_z+8,sq_blue],
+    [sq_x+3,sq_y+6,sq_z+8,sq_blue],
+    [sq_x+4,sq_y+6,sq_z+8,sq_blue],
+    [sq_x+5,sq_y+6,sq_z+8,sq_blue],
+
+    [sq_x+0,sq_y+6,sq_z+7,sq_blue],
+    [sq_x+1,sq_y+6,sq_z+7,sq_blue],
+    [sq_x+2,sq_y+6,sq_z+7,sq_blue],
+    [sq_x+4,sq_y+6,sq_z+7,sq_blue],
+    [sq_x+5,sq_y+6,sq_z+7,sq_blue],
+    [sq_x+6,sq_y+6,sq_z+7,sq_blue],
+
+    [sq_x+0,sq_y+6,sq_z+6,sq_blue],
+    [sq_x+1,sq_y+6,sq_z+6,sq_blue],
+    [sq_x+5,sq_y+6,sq_z+6,sq_blue],
+    [sq_x+6,sq_y+6,sq_z+6,sq_blue],
+
+    [sq_x+0,sq_y+6,sq_z+5,sq_blue],
+    [sq_x+1,sq_y+6,sq_z+5,sq_blue],
+    [sq_x+5,sq_y+6,sq_z+5,sq_blue],
+    [sq_x+6,sq_y+6,sq_z+5,sq_blue],
+    
+    [sq_x+1,sq_y+6,sq_z+4,sq_white],
+    [sq_x+2,sq_y+6,sq_z+4,sq_white],
+    [sq_x+4,sq_y+6,sq_z+4,sq_white],
+    [sq_x+5,sq_y+6,sq_z+4,sq_white],
+
+    [sq_x+1,sq_y+6,sq_z+3,sq_white],
+    [sq_x+2,sq_y+6,sq_z+3,sq_orange],
+    [sq_x+3,sq_y+6,sq_z+3,sq_orange],
+    [sq_x+4,sq_y+6,sq_z+3,sq_orange],
+    [sq_x+5,sq_y+6,sq_z+3,sq_white],
+
+    [sq_x+2,sq_y+6,sq_z+2,sq_orange],
+    [sq_x+3,sq_y+6,sq_z+2,sq_orange],
+    [sq_x+4,sq_y+6,sq_z+2,sq_orange],
+
+    // Part 4 - Layer 2
+    [sq_x+2,sq_y+7,sq_z+9,sq_blue],
+    [sq_x+3,sq_y+7,sq_z+9,sq_blue],
+    [sq_x+4,sq_y+7,sq_z+9,sq_blue],
+    
+    [sq_x+1,sq_y+7,sq_z+8,sq_blue],
+    [sq_x+2,sq_y+7,sq_z+8,sq_blue],
+    [sq_x+3,sq_y+7,sq_z+8,sq_blue],
+    [sq_x+4,sq_y+7,sq_z+8,sq_blue],
+    [sq_x+5,sq_y+7,sq_z+8,sq_blue],
+
+    [sq_x+0,sq_y+7,sq_z+7,sq_black],
+    [sq_x+1,sq_y+7,sq_z+7,sq_black],
+    [sq_x+5,sq_y+7,sq_z+7,sq_black],
+    [sq_x+6,sq_y+7,sq_z+7,sq_black],
+
+    [sq_x+0,sq_y+7,sq_z+6,sq_blue],
+    [sq_x+1,sq_y+7,sq_z+6,sq_blue],
+    [sq_x+5,sq_y+7,sq_z+6,sq_blue],
+    [sq_x+6,sq_y+7,sq_z+6,sq_blue],
+
+    [sq_x+0,sq_y+7,sq_z+5,sq_blue],
+    [sq_x+1,sq_y+7,sq_z+5,sq_blue],
+    [sq_x+5,sq_y+7,sq_z+5,sq_blue],
+    [sq_x+6,sq_y+7,sq_z+5,sq_blue],
+
+    [sq_x+0,sq_y+7,sq_z+4,sq_blue],
+    [sq_x+1,sq_y+7,sq_z+4,sq_blue],
+    [sq_x+2,sq_y+7,sq_z+4,sq_white],
+    [sq_x+4,sq_y+7,sq_z+4,sq_white],
+    [sq_x+5,sq_y+7,sq_z+4,sq_blue],
+    [sq_x+6,sq_y+7,sq_z+4,sq_blue],
+
+    [sq_x+2,sq_y+7,sq_z+3,sq_white],
+    [sq_x+3,sq_y+7,sq_z+3,sq_white],
+    [sq_x+4,sq_y+7,sq_z+3,sq_white],
+
+    // Part 5 - Layer 1
+    [sq_x+2,sq_y+8,sq_z+9,sq_blue],
+    [sq_x+3,sq_y+8,sq_z+9,sq_blue],
+    [sq_x+4,sq_y+8,sq_z+9,sq_blue],
+
+    [sq_x+1,sq_y+8,sq_z+8,sq_blue],
+    [sq_x+2,sq_y+8,sq_z+8,sq_blue],
+    [sq_x+3,sq_y+8,sq_z+8,sq_blue],
+    [sq_x+4,sq_y+8,sq_z+8,sq_blue],
+    [sq_x+5,sq_y+8,sq_z+8,sq_blue],
+
+    [sq_x+0,sq_y+8,sq_z+7,sq_black],
+    [sq_x+1,sq_y+8,sq_z+7,sq_black],
+    [sq_x+5,sq_y+8,sq_z+7,sq_black],
+    [sq_x+6,sq_y+8,sq_z+7,sq_black],
+
+    [sq_x+0,sq_y+8,sq_z+6,sq_blue],
+    [sq_x+6,sq_y+8,sq_z+6,sq_blue],
+    [sq_x+0,sq_y+8,sq_z+5,sq_blue],
+    [sq_x+6,sq_y+8,sq_z+5,sq_blue],
+
+    [sq_x+0,sq_y+8,sq_z+4,sq_blue],
+    [sq_x+1,sq_y+8,sq_z+4,sq_blue],
+    [sq_x+2,sq_y+8,sq_z+4,sq_blue],
+    [sq_x+3,sq_y+8,sq_z+4,sq_blue],
+    [sq_x+4,sq_y+8,sq_z+4,sq_blue],
+    [sq_x+5,sq_y+8,sq_z+4,sq_blue],
+    [sq_x+6,sq_y+8,sq_z+4,sq_blue],
+
+    [sq_x+1,sq_y+8,sq_z+3,sq_blue],
+    [sq_x+2,sq_y+8,sq_z+3,sq_blue],
+    [sq_x+3,sq_y+8,sq_z+3,sq_blue],
+    [sq_x+4,sq_y+8,sq_z+3,sq_blue],
+    [sq_x+5,sq_y+8,sq_z+3,sq_blue],
+
+    // Part 5 - Layer 2
+    [sq_x+2,sq_y+9,sq_z+9,sq_blue],
+    [sq_x+3,sq_y+9,sq_z+9,sq_blue],
+    [sq_x+4,sq_y+9,sq_z+9,sq_blue],
+
+    [sq_x+1,sq_y+9,sq_z+8,sq_blue],
+    [sq_x+2,sq_y+9,sq_z+8,sq_blue],
+    [sq_x+3,sq_y+9,sq_z+8,sq_blue],
+    [sq_x+4,sq_y+9,sq_z+8,sq_blue],
+    [sq_x+5,sq_y+9,sq_z+8,sq_blue],
+
+    [sq_x+0,sq_y+9,sq_z+7,sq_white],
+    [sq_x+1,sq_y+9,sq_z+7,sq_blue],
+    [sq_x+2,sq_y+9,sq_z+7,sq_blue],
+    [sq_x+4,sq_y+9,sq_z+7,sq_blue],
+    [sq_x+5,sq_y+9,sq_z+7,sq_blue],
+    [sq_x+6,sq_y+9,sq_z+7,sq_white],
+
+    [sq_x+0,sq_y+9,sq_z+6,sq_blue],
+    [sq_x+1,sq_y+9,sq_z+6,sq_blue],
+    [sq_x+5,sq_y+9,sq_z+6,sq_blue],
+    [sq_x+6,sq_y+9,sq_z+6,sq_blue],
+
+    [sq_x+0,sq_y+9,sq_z+5,sq_blue],
+    [sq_x+1,sq_y+9,sq_z+5,sq_blue],
+    [sq_x+5,sq_y+9,sq_z+5,sq_blue],
+    [sq_x+6,sq_y+9,sq_z+5,sq_blue],
+
+    [sq_x+0,sq_y+9,sq_z+4,sq_blue],
+    [sq_x+1,sq_y+9,sq_z+4,sq_blue],
+    [sq_x+2,sq_y+9,sq_z+4,sq_blue],
+    [sq_x+3,sq_y+9,sq_z+4,sq_blue],
+    [sq_x+4,sq_y+9,sq_z+4,sq_blue],
+    [sq_x+5,sq_y+9,sq_z+4,sq_blue],
+    [sq_x+6,sq_y+9,sq_z+4,sq_blue],
+
+    [sq_x+1,sq_y+9,sq_z+3,sq_blue],
+    [sq_x+2,sq_y+9,sq_z+3,sq_blue],
+    [sq_x+3,sq_y+9,sq_z+3,sq_blue],
+    [sq_x+4,sq_y+9,sq_z+3,sq_blue],
+    [sq_x+5,sq_y+9,sq_z+3,sq_blue],
+
+    // Part 6 - Layer 1
+    [sq_x+1,sq_y+10,sq_z+8,sq_blue],
+    [sq_x+2,sq_y+10,sq_z+8,sq_blue],
+    [sq_x+3,sq_y+10,sq_z+8,sq_blue],
+    [sq_x+4,sq_y+10,sq_z+8,sq_blue],
+    [sq_x+5,sq_y+10,sq_z+8,sq_blue],
+
+    [sq_x+0,sq_y+10,sq_z+7,sq_blue],
+    [sq_x+1,sq_y+10,sq_z+7,sq_blue],
+    [sq_x+2,sq_y+10,sq_z+7,sq_blue],
+    [sq_x+3,sq_y+10,sq_z+7,sq_blue],
+    [sq_x+4,sq_y+10,sq_z+7,sq_blue],
+    [sq_x+5,sq_y+10,sq_z+7,sq_blue],
+    [sq_x+6,sq_y+10,sq_z+7,sq_blue],
+
+    [sq_x+0,sq_y+10,sq_z+6,sq_blue],
+    [sq_x+1,sq_y+10,sq_z+6,sq_blue],
+    [sq_x+5,sq_y+10,sq_z+6,sq_blue],
+    [sq_x+6,sq_y+10,sq_z+6,sq_blue],
+
+    [sq_x+0,sq_y+10,sq_z+5,sq_blue],
+    [sq_x+1,sq_y+10,sq_z+5,sq_blue],
+    [sq_x+2,sq_y+10,sq_z+5,sq_blue],
+    [sq_x+3,sq_y+10,sq_z+5,sq_blue],
+    [sq_x+4,sq_y+10,sq_z+5,sq_blue],
+    [sq_x+5,sq_y+10,sq_z+5,sq_blue],
+    [sq_x+6,sq_y+10,sq_z+5,sq_blue],
+
+    [sq_x+1,sq_y+10,sq_z+4,sq_blue],
+    [sq_x+2,sq_y+10,sq_z+4,sq_blue],
+    [sq_x+3,sq_y+10,sq_z+4,sq_blue],
+    [sq_x+4,sq_y+10,sq_z+4,sq_blue],
+    [sq_x+5,sq_y+10,sq_z+4,sq_blue],
+
+    [sq_x+2,sq_y+10,sq_z+3,sq_blue],
+    [sq_x+3,sq_y+10,sq_z+3,sq_blue],
+    [sq_x+4,sq_y+10,sq_z+3,sq_blue],
+
+    // Part 6 - Layer 2
+    [sq_x+2,sq_y+11,sq_z+8,sq_blue],
+    [sq_x+3,sq_y+11,sq_z+8,sq_blue],
+    [sq_x+4,sq_y+11,sq_z+8,sq_blue],
+
+    [sq_x+1,sq_y+11,sq_z+7,sq_blue],
+    [sq_x+2,sq_y+11,sq_z+7,sq_blue],
+    [sq_x+3,sq_y+11,sq_z+7,sq_blue],
+    [sq_x+4,sq_y+11,sq_z+7,sq_blue],
+    [sq_x+5,sq_y+11,sq_z+7,sq_blue],
+
+    [sq_x+1,sq_y+11,sq_z+6,sq_blue],
+    [sq_x+2,sq_y+11,sq_z+6,sq_blue],
+    [sq_x+3,sq_y+11,sq_z+6,sq_blue],
+    [sq_x+4,sq_y+11,sq_z+6,sq_blue],
+    [sq_x+5,sq_y+11,sq_z+6,sq_blue],
+
+    [sq_x+1,sq_y+11,sq_z+5,sq_blue],
+    [sq_x+2,sq_y+11,sq_z+5,sq_blue],
+    [sq_x+3,sq_y+11,sq_z+5,sq_blue],
+    [sq_x+4,sq_y+11,sq_z+5,sq_blue],
+    [sq_x+5,sq_y+11,sq_z+5,sq_blue],
+
+    [sq_x+2,sq_y+11,sq_z+4,sq_blue],
+    [sq_x+3,sq_y+11,sq_z+4,sq_blue],
+    [sq_x+4,sq_y+11,sq_z+4,sq_blue],
+
+    // Part 6 - Layer 3
+    [sq_x+2,sq_y+12,sq_z+7,sq_blue],
+    [sq_x+3,sq_y+12,sq_z+7,sq_blue],
+    [sq_x+4,sq_y+12,sq_z+7,sq_blue],
+
+    [sq_x+2,sq_y+12,sq_z+6,sq_blue],
+    [sq_x+3,sq_y+12,sq_z+6,sq_blue],
+    [sq_x+4,sq_y+12,sq_z+6,sq_blue],
+
+    [sq_x+2,sq_y+12,sq_z+5,sq_blue],
+    [sq_x+3,sq_y+12,sq_z+5,sq_blue],
+    [sq_x+4,sq_y+12,sq_z+5,sq_blue],
+];
