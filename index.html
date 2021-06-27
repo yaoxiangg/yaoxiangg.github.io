@@ -134,7 +134,7 @@
 
         #mode-toast-msg {
           visibility: hidden;
-          min-width: 250px;
+          min-width: 200px;
           margin-left: -125px;
           background-color: #333;
           color: #ffffff;
@@ -180,11 +180,32 @@
           to {bottom: 0; opacity: 0;}
         }
 
+        .edit-mode {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            text-align: center;
+        }
+
+        #em-color-picker {
+            margin: auto;
+            min-width: 50px;
+            max-width: 50px;
+            min-height: 50px;
+            background: white;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        #em-dump-blueprint-text {
+            border: 1px solid black;
+        }
+
     </style>
 </head>
 
 <body>
-    <div id="mode-toast-msg">Some text some message..</div>
+    <div id="mode-toast-msg"></div>
 
     <div class="hud-elem">
         <input id="hue-slider" type="range" step="0.01" max="360" min="0" value="0"/>
@@ -216,17 +237,21 @@
         <div class="btn-round" onclick="showImage('bulbasaur')">BULBASAUR</div>
         <div class="btn-round" onclick="showImage('wallz')">WALL Z</div>
     </div>
+    <div class="edit-mode hud-elem hide">
+        <div id="em-color-picker"></div><br/>
+        <div id="em-dump-blueprint-text" class="btn" onclick="dumpBluePrint()">Dump Blueprint</div>
+    </div>
 
     <script src="./assets/js/blueprint.js"></script>
     <script>
 
         // Global Vars
         console.log("Hit <space> key to hide/unhide HUD");
-        console.log(gsap.ticker);
         var currentTimeout = [];
         var toastTimeouts = [];
         var drag_controls = [];
         var all_groups = [];
+        var current_mode = "orbit";
         var is_orbit_mode = true;
         var cycle_enabled = false;
         var hide_hud = false;
@@ -234,6 +259,7 @@
         var backgroundColor = 0x061822;
         var planeColor = 0xf7f9fb;
         var cubeGaps = 1.05;
+        var color_picker_val = 0xffffff;
 
         // Cubes Grids
         var full_cube = [];
@@ -387,6 +413,25 @@
             return mesh;
         }
 
+        function drawRawCube(x, y, z, color) {
+            var geometry = new THREE.BoxGeometry(1, 1, 1);  
+            var material = new THREE.MeshPhongMaterial({color: color});
+            var mesh = new THREE.Mesh(geometry, material);
+            mesh.position.x = x;
+            mesh.position.y = y;
+            mesh.position.z = z;
+            mesh.castShadow = true; //default is false
+            mesh.receiveShadow = false; //default
+            mesh.scale.x = 0.0;
+            mesh.scale.y = 0.0;
+            mesh.scale.z = 0.0;
+            mesh.cursor = 'pointer';
+            group.add(mesh);
+            gsap.to(mesh.scale, 0.2, { x: 1, y: 1, z: 1, ease: Power4.easeInOut, delay: 0});
+            gsap.to(mesh.material, 1, { transparent: true, opacity: 1});
+            return mesh;
+        }
+
         function drawPlane(x, y, z, color) {
             const geometry = new THREE.PlaneGeometry(20,20);
             geometry.rotateX(-Math.PI * 0.5);
@@ -467,7 +512,15 @@
             var lslider = document.getElementById("lum-slider");
             setInterval(function(){
                 var hex_val = hslToHex(hslider.value, sslider.value, lslider.value);
-                sphere_mesh.material.color.setHex(parseInt(hex_val, 16));
+                color_picker_val = parseInt(hex_val, 16);
+                if (current_mode == "orbit") {
+                    sphere_mesh.material.color.setHex(color_picker_val);
+                }
+
+                if (current_mode == "edit") {
+                    var rgb = hexToRgb(hex_val.substring(2));
+                    document.getElementById("em-color-picker").style.backgroundColor = "rgb("+rgb.r+","+rgb.g+","+rgb.b+")";
+                }
             })
         } );
 
@@ -480,6 +533,19 @@
             return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
           };
           return `0x${f(0)}${f(8)}${f(4)}`;
+        }
+
+        function rgbToHex(r, g, b) {
+          return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        }
+
+        function hexToRgb(hex) {
+          var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+          return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+          } : null;
         }
 
         // Setup Lights
@@ -552,6 +618,13 @@
 
         function onMouseUp(event) {
             is_moving_camera = false;
+            if (current_mode == "edit") {
+                mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+                addCustomCube(mouse.x, mouse.y, event);
+                old_x = (event.clientX / window.innerWidth) * 2 - 1;
+                old_y = (event.clientY / window.innerHeight) * 2 - 1;
+            }
         }
 
         function onMouseMove(event) {
@@ -580,27 +653,93 @@
             for(var i = 0; i < intersects.length; i++) {
                 if (isMouse)
                     event.preventDefault();
-                var final_rot = Math.PI * 0.5;
-                if (intersects[i].object.rotation.y > Math.PI * 0.5) {
-                    final_rot = 0;
-                }
-                var xx = intersects[i].object.rotation.y + Math.PI * 0.5;
                 if (intersects[i].object.geometry.type == 'BoxGeometry') {
                     this.tl = new TimelineMax();
                     this.tl.to(intersects[i].object.scale, .5, {x: .5, y: .5, z: .5,ease: Expo.easeOut});
-                    this.tl.to(intersects[i].object.rotation, .5, {y: Math.PI*.5, ease: Expo.easeOut});
+                    // this.tl.to(intersects[i].object.rotation, .5, {y: Math.PI*.5, ease: Expo.easeOut});
                     this.tl.to(intersects[i].object.scale, .5, {x: 1, y: 1, z: 1,ease: Expo.easeOut});;
                 }
                 break;
             }
         }
+
+        function dumpBluePrint() {
+            var line_out = "";
+            for (var i in group.children) {
+                // console.log(group.children[i]);
+                var x = (group.children[i].position.x / cubeGaps).toFixed(0);
+                var y = (group.children[i].position.y / cubeGaps).toFixed(0);
+                var z = (group.children[i].position.z / cubeGaps).toFixed(0);
+                var color = group.children[i].material.color.getHexString();
+                line_out += "[gp_x+("+x+"),gp_y+("+y+"),gp_z+("+z+"),0x"+color+"],\n";
+            }
+            copyToClipboard(line_out);
+            showToast("Copied Blueprint to Clipboard!", 0);
+            // console.log(line_out);
+        }
+
+        function addCustomCube(clientX, clientY, mouseEvent) {
+            raycaster.setFromCamera(mouse, camera);
+            var intersects = raycaster.intersectObjects(scene.children, true);
+
+            for(var i = 0; i < intersects.length; i++) {
+                mouseEvent.preventDefault();
+                if (intersects[i].object.geometry.type == 'BoxGeometry') {
+                    // console.log(mouseEvent);
+                    // console.log(intersects[i]);
+                    // console.log(intersects[i].point);
+                    var int_x = intersects[i].point.x;
+                    var int_y = intersects[i].point.y;
+                    var int_z = intersects[i].point.z;
+                    var delta_x = 0, delta_y = 0, delta_z = 0;
+
+                    var del_x = Math.abs(int_x.toFixed(4) - int_x);
+                    var del_y = Math.abs(int_y.toFixed(4) - int_y);
+                    var del_z = Math.abs(int_z.toFixed(4) - int_z);
+                    
+                    if (del_x < del_y && del_x < del_z)
+                        delta_x = 1;
+
+                    if (del_y < del_x && del_y < del_z)
+                        delta_y = 1;
+
+                    if (del_z < del_x && del_z < del_y)
+                        delta_z = 1;
+
+                    // console.log('x: ' + delta_x + ' y: ' + delta_y + ' z: ' + delta_z);
+                    var object_x = intersects[i].object.position.x;
+                    var object_y = intersects[i].object.position.y;
+                    var object_z = intersects[i].object.position.z;
+
+                    // Right Click
+                    if (mouseEvent.button == 2)
+                        removeCube(intersects[i].object);
+                    else
+                        drawRawCube(object_x+(delta_x*cubeGaps),object_y+(delta_y*cubeGaps),object_z+(delta_z*cubeGaps),color_picker_val);
+                }
+                break;
+            }
+        }
+
+        function copyToClipboard(text) {
+            var dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+        }
+
         window.addEventListener('touchstart', onTouchStart);
         window.addEventListener('touchend', onMouseUp);
         window.addEventListener('touchmove', onTouchMove);
         window.addEventListener('mousedown', onMouseDown);
+        window.addEventListener('pointerdown', onMouseDown);
+        window.addEventListener('pointerup', onMouseUp);
         window.addEventListener('mouseup', onMouseUp);
         window.addEventListener('mousemove', onMouseMove);
         window.addEventListener('resize', onWindowResize);
+        window.addEventListener('contextmenu', function(evt) { evt.preventDefault(); }, false);
 
         function onWindowResize() {
             var aspect = window.innerWidth / window.innerHeight;
@@ -685,16 +824,52 @@
                         showToast('UI Shown', 0);
                     break;
                 case 9: // tab
-                    is_orbit_mode = !is_orbit_mode;
-                    controls.enabled = is_orbit_mode;
-                    for (dctrl in drag_controls) {
-                        drag_controls[dctrl].enabled = !is_orbit_mode;
-                    }
-                    draw_new_image = !is_orbit_mode;
-                    if (is_orbit_mode)
-                        showToast('Orbit Mode', 0);
-                    else
+                    if (current_mode == "orbit") {
+                        current_mode = "move";
                         showToast('Move Mode', 0);
+                    } else if (current_mode == "move") {
+                        current_mode = "edit";
+                        showToast('Edit Mode', 0);
+                    } else if (current_mode == "edit") {
+                        current_mode = "orbit";
+                        showToast('Orbit Mode', 0);
+                    }
+
+                    // Orbit mode
+                    if (current_mode == "orbit")
+                        is_orbit_mode = true;
+                    else
+                        is_orbit_mode = false;
+                    controls.enabled = is_orbit_mode;
+
+                    // Move mode
+                    if (current_mode == "move") {
+                        for (dctrl in drag_controls) {
+                            drag_controls[dctrl].enabled = true;
+                        }
+                        draw_new_image = true;
+                    } else {
+                        for (dctrl in drag_controls) {
+                            drag_controls[dctrl].enabled = false;
+                        }
+                        draw_new_image = false;
+                    }
+
+                    // Edit mode
+                    if (current_mode == "edit") {
+                        var editm = document.querySelectorAll('.edit-mode');
+                        // Show UI
+                        for (var i = 0; i < editm.length; i++) {
+                            editm[i].classList.remove("hide");
+                        }
+                    } else {
+                        // Hide UI
+                        var editm = document.querySelectorAll('.edit-mode');
+                        // Show UI
+                        for (var i = 0; i < editm.length; i++) {
+                            editm[i].classList.add("hide");
+                        }
+                    }
                     break;
             }
           };
