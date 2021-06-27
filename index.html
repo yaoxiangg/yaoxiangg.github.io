@@ -6,6 +6,7 @@
     <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="./assets/css/rainbow-slider.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -134,6 +135,11 @@
 </head>
 
 <body>
+    <div class="hud-elem">
+        <input id="hue-slider" type="range" step="0.01" max="360" min="0" value="0"/>
+        <input id="sat-slider" type="range" step="1" max="100" min="0" value="0"/>
+        <input id="lum-slider" type="range" step="1" max="100" min="0" value="100"/>
+    </div>
     <h1 class="title hud-elem">Genique</h1>
     <label class="switch hud-elem" for="checkbox">
         <input type="checkbox" id="checkbox"/>
@@ -186,7 +192,7 @@
         }
 
         var helloworld_grid = helloworld_1_grid.concat(helloworld_2_grid).concat(helloworld_3_grid).concat(helloworld_4_grid);
-        var g_grids = [snorlax_grid,dratini_grid,imagex_grid,imagey_grid,imagez_grid,image_gengar_grid,full_cube,helloworld_grid];
+        var g_grids = [snorlax_grid,dratini_grid,imagex_grid,imagey_grid,imagez_grid,image_gengar_grid,full_cube,helloworld_grid,charmander_grid,squirtle_grid,bulbasaur_grid];
 
         // Setup Scene
         var scene = new THREE.Scene();
@@ -374,7 +380,27 @@
             globe.position.z = 0;
             globe.add(sphere_mesh);
             scene.add(globe);
+            var hslider = document.getElementById("hue-slider");
+            var sslider = document.getElementById("sat-slider");
+            var lslider = document.getElementById("lum-slider");
+            setInterval(function(){
+                var hex_val = hslToHex(hslider.value, sslider.value, lslider.value);
+                sphere_mesh.material.color.setHex(parseInt(hex_val, 16));
+            })
         } );
+
+        function hslToHex(h, s, l) {
+          l /= 100;
+          const a = s * Math.min(l, 1 - l) / 100;
+          const f = n => {
+            const k = (n + h / 30) % 12;
+            const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+            return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
+          };
+          return `0x${f(0)}${f(8)}${f(4)}`;
+        }
+
+        
 
         // Setup Lights
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -443,7 +469,6 @@
         }
 
         function onMouseMove(event) {
-            event.preventDefault();
             mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
             mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
             processMouse(mouse.x, mouse.y);
@@ -466,6 +491,7 @@
             var intersects = raycaster.intersectObjects(scene.children, true);
 
             for(var i = 0; i < intersects.length; i++) {
+                event.preventDefault();
                 var final_rot = Math.PI * 0.5;
                 if (intersects[i].object.rotation.y > Math.PI * 0.5) {
                     final_rot = 0;
@@ -543,6 +569,7 @@
             }
           };
         }
+
         setupKeyControls();
 
         // Script after Init
