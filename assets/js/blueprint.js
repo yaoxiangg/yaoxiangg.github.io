@@ -3532,3 +3532,4 @@ var bulbasaur_grid = [
     [bul_x+3,bul_y+6,bul_z-6,bul_lightgreen],
 
 ];
+

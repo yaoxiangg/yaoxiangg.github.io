@@ -226,6 +226,7 @@
         <div class="btn" onclick="showImage('squirtle')">SQUIRTLE</div>
         <div class="btn" onclick="showImage('bulbasaur')">BULBASAUR</div>
         <div class="btn" onclick="showImage('wallz')">WALL Z</div>
+        <div class="btn" onclick="showImage('custom')">CUSTOM</div>
     </div>
     <div class="mobile-menu-btns hud-elem">
         <div class="btn-round" onclick="showImage('helloworld')">你好世界</div>
@@ -236,6 +237,7 @@
         <div class="btn-round" onclick="showImage('squirtle')">SQUIRTLE</div>
         <div class="btn-round" onclick="showImage('bulbasaur')">BULBASAUR</div>
         <div class="btn-round" onclick="showImage('wallz')">WALL Z</div>
+        <div class="btn-round" onclick="showImage('custom')">CUSTOM</div>
     </div>
     <div class="edit-mode hud-elem hide">
         <div id="em-color-picker"></div><br/>
@@ -299,6 +301,7 @@
                 if (image_name == "charmander") { drawImage(charmander_grid); }
                 if (image_name == "squirtle") { drawImage(squirtle_grid); }
                 if (image_name == "bulbasaur") { drawImage(bulbasaur_grid); }
+                if (image_name == "custom" && gp_grid) { drawImage(gp_grid); }
                 if (cycle_enabled) {
                     cycleImage(0);
                 }
@@ -664,7 +667,7 @@
         }
 
         function dumpBluePrint() {
-            var line_out = "";
+            var line_out = "var gp_x = 1;\nvar gp_y = 1;\nvar gp_z = 1;\nvar gp_grid = [\n";
             for (var i in group.children) {
                 // console.log(group.children[i]);
                 var x = (group.children[i].position.x / cubeGaps).toFixed(0);
@@ -673,6 +676,7 @@
                 var color = group.children[i].material.color.getHexString();
                 line_out += "[gp_x+("+x+"),gp_y+("+y+"),gp_z+("+z+"),0x"+color+"],\n";
             }
+            line_out += "];"
             copyToClipboard(line_out);
             showToast("Copied Blueprint to Clipboard!", 0);
             // console.log(line_out);
