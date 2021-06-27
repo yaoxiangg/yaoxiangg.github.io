@@ -2951,12 +2951,12 @@ var bul_x = 2;
 var bul_y = 3;
 var bul_z = 7;
 
-var bul_green = 0x89C893;
-var bul_lightgreen = 0x73AC31;
-var bul_darkgreen = 0x49896F;
+var bul_green = 0x8ccdaf;
+var bul_lightgreen = 0x7cab52;
+var bul_darkgreen = 0x2e6e53;
 var bul_orange = 0xFF6600;
 var bul_black = 0x333333;
-var bul_red = 0xB74555;
+var bul_red = 0xc63250;
 var bul_white = 0xFFFFFF;
 
 //  #FFFACD lemon

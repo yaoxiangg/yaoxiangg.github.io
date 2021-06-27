@@ -4,6 +4,7 @@
     <title>Cubes Factory</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://threejs.org/examples/js/controls/DragControls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="./assets/css/rainbow-slider.css">
@@ -131,10 +132,60 @@
             display: none;
         }
 
+        #mode-toast-msg {
+          visibility: hidden;
+          min-width: 250px;
+          margin-left: -125px;
+          background-color: #333;
+          color: #ffffff;
+          text-align: center;
+          border-radius: 5px;
+          padding: 16px;
+          position: fixed;
+          z-index: 1;
+          left: 50%;
+          bottom: 30px;
+          font-size: 17px;
+        }
+
+        .showlong {
+          visibility: visible !important;
+          -webkit-animation: fadein 0.5s, fadeout 0.5s 3.7s;
+          animation: fadein 0.5s, fadeout 0.5s 3.7s;
+        }
+
+        .show {
+          visibility: visible !important;
+          -webkit-animation: fadein 0.5s, fadeout 0.5s 1.5s;
+          animation: fadein 0.5s, fadeout 0.5s 1.5s;
+        }
+
+        @-webkit-keyframes fadein {
+          from {bottom: 0; opacity: 0;} 
+          to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadein {
+          from {bottom: 0; opacity: 0;}
+          to {bottom: 30px; opacity: 1;}
+        }
+
+        @-webkit-keyframes fadeout {
+          from {bottom: 30px; opacity: 1;} 
+          to {bottom: 0; opacity: 0;}
+        }
+
+        @keyframes fadeout {
+          from {bottom: 30px; opacity: 1;}
+          to {bottom: 0; opacity: 0;}
+        }
+
     </style>
 </head>
 
 <body>
+    <div id="mode-toast-msg">Some text some message..</div>
+
     <div class="hud-elem">
         <input id="hue-slider" type="range" step="0.01" max="360" min="0" value="0"/>
         <input id="sat-slider" type="range" step="1" max="100" min="0" value="0"/>
@@ -173,6 +224,8 @@
         console.log("Hit <space> key to hide/unhide HUD");
         console.log(gsap.ticker);
         var currentTimeout = [];
+        var toastTimeouts = [];
+        var is_orbit_mode = true;
         var cycle_enabled = false;
         var hide_hud = false;
         var backgroundColor = 0x061822;
@@ -400,8 +453,6 @@
           return `0x${f(0)}${f(8)}${f(4)}`;
         }
 
-        
-
         // Setup Lights
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
         scene.add(ambientLight);
@@ -433,6 +484,11 @@
         // scene.add( helper );
 
         // Append to DOM
+        var drag_controls = new THREE.DragControls( [ ... group.children ], camera, renderer.domElement );
+        var draggableObjects = drag_controls.getObjects();
+        draggableObjects.push(group);
+        drag_controls.transformGroup = true;
+        drag_controls.enabled = false;
         document.body.appendChild(renderer.domElement);
 
         function animate() {
@@ -471,7 +527,8 @@
         function onMouseMove(event) {
             mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
             mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-            processMouse(mouse.x, mouse.y);
+            if (is_orbit_mode)
+                processMouse(mouse.x, mouse.y, 1);
             old_x = (event.clientX / window.innerWidth) * 2 - 1;
             old_y = (event.clientY / window.innerHeight) * 2 - 1;
         }
@@ -479,19 +536,20 @@
         function onTouchMove(event) {
             mouse.x = (event.touches[0].clientX  / window.innerWidth) * 2 - 1;
             mouse.y = (event.touches[0].clientY  / window.innerHeight) * 2 - 1;
-            processMouse(mouse.x, mouse.y);
+            processMouse(mouse.x, mouse.y, 0);
             old_x = mouse.x;
             old_y = mouse.y;
         }
 
 
         var old_delta = 0;
-        function processMouse(clientX, clientY) {
+        function processMouse(clientX, clientY, isMouse) {
             raycaster.setFromCamera(mouse, camera);
             var intersects = raycaster.intersectObjects(scene.children, true);
 
             for(var i = 0; i < intersects.length; i++) {
-                event.preventDefault();
+                if (isMouse)
+                    event.preventDefault();
                 var final_rot = Math.PI * 0.5;
                 if (intersects[i].object.rotation.y > Math.PI * 0.5) {
                     final_rot = 0;
@@ -539,10 +597,36 @@
             cycle_enabled = !cycle_enabled;
         }
 
+        function showToast(msg, long) {
+            var x = document.getElementById("mode-toast-msg");
+            for (var i = 0; i < toastTimeouts.length; i++) {
+                clearTimeout(toastTimeouts[i]);
+            }
+            x.classList.remove("showlong");
+            x.classList.remove("show");
+            var show_type = "show";
+            var timeout = 2000;
+            if (long) {
+                show_type = "showlong";
+                timeout = 4000;
+            }
+
+            setTimeout(function(){ 
+                x.innerHTML = msg;
+                x.classList.add(show_type);
+            }, 100);
+
+            var tout = setTimeout(function(){ 
+                x.classList.remove(show_type);
+            }, timeout);
+            toastTimeouts.push(tout);
+        }
+
         // Keyboards
         function setupKeyControls() {
           document.onkeydown = function(e) {
-          var cube = group;
+            e.preventDefault();
+            var cube = group;
             switch (e.keyCode) {
                 case 87: //w
                     break;
@@ -559,12 +643,25 @@
                     var hud_elems = document.querySelectorAll('.hud-elem');
                     for (var i = 0; i < hud_elems.length; i++) {
                         if (hide_hud) {
-                            hud_elems[i].classList.add("hide");
-                        } else {
                             hud_elems[i].classList.remove("hide");
+                        } else {
+                            hud_elems[i].classList.add("hide");
                         }
                     }
                     hide_hud = !hide_hud;
+                    if (hide_hud)
+                        showToast('UI Hidden', 0);
+                    else
+                        showToast('UI Shown', 0);
+                    break;
+                case 9: // tab
+                    is_orbit_mode = !is_orbit_mode;
+                    controls.enabled = is_orbit_mode;
+                    drag_controls.enabled = !is_orbit_mode;
+                    if (is_orbit_mode)
+                        showToast('Orbit Mode', 0);
+                    else
+                        showToast('Move Mode', 0);
                     break;
             }
           };
@@ -592,6 +689,7 @@
         }
         
         cycleImage(-1);
+        showToast('Hit &lt;space&gt; to hide UI</br>Hit &lt;tab&gt; to toggle orbit/move mode', 1);
 
     </script>
 </body>
