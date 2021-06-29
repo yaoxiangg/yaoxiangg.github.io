@@ -6,6 +6,7 @@
     <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
     <script src="https://threejs.org/examples/js/controls/DragControls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script src="./assets/js/colorpicker.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="./assets/css/rainbow-slider.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
@@ -185,6 +186,7 @@
             right: 20px;
             bottom: 20px;
             text-align: center;
+            padding: 5px 5px 2px 5px;
         }
 
         #em-color-picker {
@@ -195,18 +197,48 @@
             background: white;
             border: 1px solid black;
             border-radius: 5px;
+            display: inline-flex;
         }
 
         #em-dump-blueprint-text {
             border: 1px solid black;
         }
 
+        #picker-wrapper {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            display: inline-flex;
+            background: white;
+        }
+        #slider-wrapper {
+            width: 10px;
+            height: 50px;
+            position: relative;
+            display: inline-flex;
+            margin-left: 2px;
+        }
+        #picker-indicator {
+            width: 3px;
+            height: 3px;
+            position: absolute;
+            border: 1px solid white;
+        }
+        #slider-indicator {
+            width: 8px;
+            height: 8px;
+            position: absolute;
+            border: 1px solid black;
+        }
+        .color-picker {
+            z-index: 999;
+            display: inline-flex;
+        }
     </style>
 </head>
 
 <body>
     <div id="mode-toast-msg"></div>
-
     <div class="hud-elem">
         <input id="hue-slider" type="range" step="0.01" max="360" min="0" value="0"/>
         <input id="sat-slider" type="range" step="1" max="100" min="0" value="0"/>
@@ -240,7 +272,17 @@
         <div class="btn-round" onclick="showImage('custom')">CUSTOM</div>
     </div>
     <div class="edit-mode hud-elem hide">
-        <div id="em-color-picker"></div><br/>
+        <div id="em-color-picker"></div>
+        <div class="color-picker">
+            <div id="picker-wrapper">
+                <div id="picker"></div>
+                <div id="picker-indicator"></div>
+            </div>
+            <div id="slider-wrapper">
+                <div id="slider"></div>
+                <div id="slider-indicator"></div>
+            </div>
+        </div>
         <div id="em-dump-blueprint-text" class="btn" onclick="dumpBluePrint()">Dump Blueprint</div>
     </div>
 
@@ -261,6 +303,7 @@
         var backgroundColor = 0x061822;
         var planeColor = 0xf7f9fb;
         var cubeGaps = 1.05;
+        var color_slider_val = 0xffffff;
         var color_picker_val = 0xffffff;
 
         // Cubes Grids
@@ -315,7 +358,7 @@
             if (is_drawing) return;
             is_drawing = true;
 
-            if (is_orbit_mode && all_groups.length > 1) {
+            if (current_mode == "orbit" && all_groups.length > 1) {
                 var gl = all_groups.length;
                 for (var idx = 1; idx < gl; idx++) {
                     var last_group = all_groups.pop();
@@ -328,7 +371,7 @@
             var idx = 0;
             var to_remove = [];
 
-            if (!is_orbit_mode && draw_new_image) {
+            if (current_mode != "orbit" && draw_new_image) {
                 group = new THREE.Group();
                 all_groups.push(group);
             } else {
@@ -352,7 +395,7 @@
             }
 
             for (x in to_remove) {
-                removeCube(to_remove[x]);
+                removeCube(to_remove[x], 1);
             }
 
             var to_add = image_grid.length - idx;
@@ -371,12 +414,12 @@
             is_drawing = false;
         }
 
-        function removeCube(cube) {
+        function removeCube(cube, time) {
             // Fly from top
             // gsap.to(cube.position, 1, {y: cube.position.y*cubeGaps+60});
-            gsap.to(cube.material, 1, { transparent: true, opacity: 0});
-            gsap.to(cube.scale, 1, { x: 0.0, y: 0.0, z: 0.0, ease: Power4.easeInOut}, "-=1");
-            var removetimeout = setTimeout(function() { cube.geometry.dispose(); group.remove(cube); scene.remove(cube); }, 1000);
+            gsap.to(cube.material, time, { transparent: true, opacity: 0});
+            gsap.to(cube.scale, time, { x: 0.0, y: 0.0, z: 0.0, ease: Power4.easeInOut}, "-=1");
+            var removetimeout = setTimeout(function() { cube.geometry.dispose(); group.remove(cube); scene.remove(cube); }, time * 1000);
             currentTimeout.push(removetimeout);
         }
 
@@ -515,17 +558,31 @@
             var lslider = document.getElementById("lum-slider");
             setInterval(function(){
                 var hex_val = hslToHex(hslider.value, sslider.value, lslider.value);
-                color_picker_val = parseInt(hex_val, 16);
+                color_slider_val = parseInt(hex_val, 16);
                 if (current_mode == "orbit") {
-                    sphere_mesh.material.color.setHex(color_picker_val);
-                }
-
-                if (current_mode == "edit") {
-                    var rgb = hexToRgb(hex_val.substring(2));
-                    document.getElementById("em-color-picker").style.backgroundColor = "rgb("+rgb.r+","+rgb.g+","+rgb.b+")";
+                    sphere_mesh.material.color.setHex(color_slider_val);
                 }
             })
         } );
+
+        ColorPicker.fixIndicators(
+            document.getElementById('slider-indicator'),
+            document.getElementById('picker-indicator'));
+
+        ColorPicker(
+            document.getElementById('slider'), 
+            document.getElementById('picker'), 
+            function(hex, hsv, rgb, pickerCoordinate, sliderCoordinate) {
+                ColorPicker.positionIndicators(
+                    document.getElementById('slider-indicator'),
+                    document.getElementById('picker-indicator'),
+                    sliderCoordinate, pickerCoordinate
+                );
+                if (current_mode == "edit") {
+                    color_picker_val = hex;
+                    document.getElementById("em-color-picker").style.backgroundColor = hex;
+                }
+        });
 
         function hslToHex(h, s, l) {
           l /= 100;
@@ -633,7 +690,7 @@
         function onMouseMove(event) {
             mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
             mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-            if (is_orbit_mode)
+            if (current_mode == "orbit")
                 processMouse(mouse.x, mouse.y, 1);
             old_x = (event.clientX / window.innerWidth) * 2 - 1;
             old_y = (event.clientY / window.innerHeight) * 2 - 1;
@@ -717,7 +774,7 @@
 
                     // Right Click
                     if (mouseEvent.button == 2)
-                        removeCube(intersects[i].object);
+                        removeCube(intersects[i].object, 0.5);
                     else
                         drawRawCube(object_x+(delta_x*cubeGaps),object_y+(delta_y*cubeGaps),object_z+(delta_z*cubeGaps),color_picker_val);
                 }
@@ -840,7 +897,7 @@
                     }
 
                     // Orbit mode
-                    if (current_mode == "orbit")
+                    if (current_mode == "orbit" || current_mode == "edit")
                         is_orbit_mode = true;
                     else
                         is_orbit_mode = false;
