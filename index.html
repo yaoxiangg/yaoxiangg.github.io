@@ -363,7 +363,9 @@
                 var gl = all_groups.length;
                 for (var idx = 1; idx < gl; idx++) {
                     var last_group = all_groups.pop();
-                    scene.remove(last_group);
+                    for (idx in last_group.children) {
+                        removeCube(last_group.children[i], 0.5);
+                    }
                     delete drag_controls[idx];
                     group = all_groups[0];
                 }
@@ -691,8 +693,12 @@
         function onMouseMove(event) {
             mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
             mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-            if (current_mode == "orbit")
-                processMouse(mouse.x, mouse.y, 1);
+            var is_over_cube = processMouse(mouse.x, mouse.y, 1);
+            if (!is_over_cube && current_mode == "move")
+                controls.enabled = true;
+            else if (is_over_cube && current_mode == "move")
+                controls.enabled = false;
+
             old_x = (event.clientX / window.innerWidth) * 2 - 1;
             old_y = (event.clientY / window.innerHeight) * 2 - 1;
         }
@@ -715,13 +721,17 @@
                 if (isMouse)
                     event.preventDefault();
                 if (intersects[i].object.geometry.type == 'BoxGeometry') {
-                    this.tl = new TimelineMax();
-                    this.tl.to(intersects[i].object.scale, .5, {x: .5, y: .5, z: .5,ease: Expo.easeOut});
-                    // this.tl.to(intersects[i].object.rotation, .5, {y: Math.PI*.5, ease: Expo.easeOut});
-                    this.tl.to(intersects[i].object.scale, .5, {x: 1, y: 1, z: 1,ease: Expo.easeOut});;
+                    if (current_mode == "orbit") {
+                        this.tl = new TimelineMax();
+                        this.tl.to(intersects[i].object.scale, .5, {x: .5, y: .5, z: .5,ease: Expo.easeOut});
+                        // this.tl.to(intersects[i].object.rotation, .5, {y: Math.PI*.5, ease: Expo.easeOut});
+                        this.tl.to(intersects[i].object.scale, .5, {x: 1, y: 1, z: 1,ease: Expo.easeOut});;
+                    }
+                    return true;
                 }
                 break;
             }
+            return false;
         }
 
         function dumpBluePrint() {
@@ -748,8 +758,8 @@
                 mouseEvent.preventDefault();
                 if (intersects[i].object.geometry.type == 'BoxGeometry') {
                     // console.log(mouseEvent);
-                    console.log(intersects[i]);
-                    console.log(intersects[i].point);
+                    // console.log(intersects[i]);
+                    // console.log(intersects[i].point);
                     var int_x = intersects[i].point.x;
                     var int_y = intersects[i].point.y;
                     var int_z = intersects[i].point.z;
@@ -952,6 +962,10 @@
 
                     // Move mode
                     if (current_mode == "move") {
+                        controls.enablePan = true;
+                        controls.enabled = true;
+                        controls.update();
+
                         for (dctrl in drag_controls) {
                             drag_controls[dctrl].enabled = true;
                         }
