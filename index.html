@@ -305,6 +305,7 @@
         var cubeGaps = 1.05;
         var color_slider_val = 0xffffff;
         var color_picker_val = 0xffffff;
+        var edit_mode_remove_cube = false;
 
         // Cubes Grids
         var full_cube = [];
@@ -747,25 +748,45 @@
                 mouseEvent.preventDefault();
                 if (intersects[i].object.geometry.type == 'BoxGeometry') {
                     // console.log(mouseEvent);
-                    // console.log(intersects[i]);
-                    // console.log(intersects[i].point);
+                    console.log(intersects[i]);
+                    console.log(intersects[i].point);
                     var int_x = intersects[i].point.x;
                     var int_y = intersects[i].point.y;
                     var int_z = intersects[i].point.z;
                     var delta_x = 0, delta_y = 0, delta_z = 0;
 
-                    var del_x = Math.abs(int_x.toFixed(4) - int_x);
-                    var del_y = Math.abs(int_y.toFixed(4) - int_y);
-                    var del_z = Math.abs(int_z.toFixed(4) - int_z);
-                    
-                    if (del_x < del_y && del_x < del_z)
-                        delta_x = 1;
-
-                    if (del_y < del_x && del_y < del_z)
-                        delta_y = 1;
-
-                    if (del_z < del_x && del_z < del_y)
-                        delta_z = 1;
+                    // 0,1 - x+1
+                    // 2,3 - x-1
+                    // 4,5 - y+1
+                    // 6,7 - y-1
+                    // 8,9 - z+1
+                    // 10,11 - z+1
+                    switch (intersects[i].faceIndex) {
+                        case 0:
+                        case 1:
+                            delta_x = 1;
+                            break;
+                        case 2:
+                        case 3:
+                            delta_x = -1;
+                            break;
+                        case 4:
+                        case 5:
+                            delta_y = 1;
+                            break;
+                        case 6:
+                        case 7:
+                            delta_y = -1;
+                            break;
+                        case 8:
+                        case 9:
+                            delta_z = 1;
+                            break;
+                        case 10:
+                        case 11:
+                            delta_z = -1;
+                            break;
+                    }
 
                     // console.log('x: ' + delta_x + ' y: ' + delta_y + ' z: ' + delta_z);
                     var object_x = intersects[i].object.position.x;
@@ -773,10 +794,12 @@
                     var object_z = intersects[i].object.position.z;
 
                     // Right Click
-                    if (mouseEvent.button == 2)
-                        removeCube(intersects[i].object, 0.5);
-                    else
-                        drawRawCube(object_x+(delta_x*cubeGaps),object_y+(delta_y*cubeGaps),object_z+(delta_z*cubeGaps),color_picker_val);
+                    if (mouseEvent.button != 2) {
+                        if (edit_mode_remove_cube)
+                            removeCube(intersects[i].object, 0.5);
+                        else 
+                            drawRawCube(object_x+(delta_x*cubeGaps),object_y+(delta_y*cubeGaps),object_z+(delta_z*cubeGaps),color_picker_val);
+                    }
                 }
                 break;
             }
@@ -854,10 +877,23 @@
 
         // Keyboards
         function setupKeyControls() {
+          document.onkeyup = function(e) {
+            switch (e.keyCode) {
+                case 16: //shift
+                    edit_mode_remove_cube = false;
+                    break;
+            }
+          };
           document.onkeydown = function(e) {
-            e.preventDefault();
             var cube = group;
             switch (e.keyCode) {
+                case 37: //left
+                case 38: //up
+                case 39: //right
+                case 40: //down
+                case 16: //shift
+                    edit_mode_remove_cube = true;
+                    break;
                 case 87: //w
                     break;
                 // case 83: //s
@@ -903,6 +939,17 @@
                         is_orbit_mode = false;
                     controls.enabled = is_orbit_mode;
 
+                    if (current_mode == "orbit") {
+                        camera.position.set(50, 50, 50);
+                        camera.lookAt(0, 0, 0);
+                        controls.enablePan = false;
+                        controls.maxPolarAngle  = Math.PI / 2 - 0.1;
+                        controls.minPolarAngle  = Math.PI / 8;
+                        controls.maxZoom = Math.PI/ 2;
+                        controls.minZoom = Math.PI/ 9;
+                        controls.update();
+                    }
+
                     // Move mode
                     if (current_mode == "move") {
                         for (dctrl in drag_controls) {
@@ -918,6 +965,19 @@
 
                     // Edit mode
                     if (current_mode == "edit") {
+                        controls.keys = {
+                            LEFT: 'ArrowLeft', //left arrow
+                            UP: 'ArrowUp', // up arrow
+                            RIGHT: 'ArrowRight', // right arrow
+                            BOTTOM: 'ArrowDown' // down arrow
+                        }
+                        controls.enablePan = true;
+                        controls.maxPolarAngle = Math.PI - 0.1;
+                        controls.minPolarAngle = Math.PI / 9;
+                        controls.maxZoom = Math.PI;
+                        controls.minZoom = Math.PI/ 20;
+                        controls.update();
+
                         var editm = document.querySelectorAll('.edit-mode');
                         // Show UI
                         for (var i = 0; i < editm.length; i++) {
@@ -931,7 +991,10 @@
                             editm[i].classList.add("hide");
                         }
                     }
+                    e.preventDefault();
                     break;
+                default:
+                    e.preventDefault();
             }
           };
         }
