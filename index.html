@@ -136,6 +136,7 @@
         #mode-toast-msg {
           visibility: hidden;
           min-width: 200px;
+          max-width: 200px;
           margin-left: -125px;
           background-color: #333;
           color: #ffffff;
@@ -181,7 +182,7 @@
           to {bottom: 0; opacity: 0;}
         }
 
-        .edit-mode {
+        .edit-mode-cp {
             position: absolute;
             right: 20px;
             bottom: 20px;
@@ -234,10 +235,29 @@
             z-index: 999;
             display: inline-flex;
         }
+        #mode-label-wrapper {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+        }
+        #mode-label {
+            width: 200px;
+            border: 5px solid yellow;
+            border-radius: 2px;
+            text-align: center;
+            padding: 10px;
+            color: yellow;
+            margin: auto;
+            margin-top: 20px;
+            background: black;
+        }
     </style>
 </head>
 
 <body>
+    <div id="mode-label-wrapper" class="edit-mode hud-elem hide">
+        <div id="mode-label">EDIT</div>
+    </div>
     <div id="mode-toast-msg"></div>
     <div class="hud-elem">
         <input id="hue-slider" type="range" step="0.01" max="360" min="0" value="0"/>
@@ -272,18 +292,20 @@
         <div class="btn-round" onclick="showImage('custom')">CUSTOM</div>
     </div>
     <div class="edit-mode hud-elem hide">
-        <div id="em-color-picker"></div>
-        <div class="color-picker">
-            <div id="picker-wrapper">
-                <div id="picker"></div>
-                <div id="picker-indicator"></div>
+        <div class="edit-mode-cp">
+            <div id="em-color-picker"></div>
+            <div class="color-picker">
+                <div id="picker-wrapper">
+                    <div id="picker"></div>
+                    <div id="picker-indicator"></div>
+                </div>
+                <div id="slider-wrapper">
+                    <div id="slider"></div>
+                    <div id="slider-indicator"></div>
+                </div>
             </div>
-            <div id="slider-wrapper">
-                <div id="slider"></div>
-                <div id="slider-indicator"></div>
-            </div>
+            <div id="em-dump-blueprint-text" class="btn" onclick="dumpBluePrint()">Dump Blueprint</div>
         </div>
-        <div id="em-dump-blueprint-text" class="btn" onclick="dumpBluePrint()">Dump Blueprint</div>
     </div>
 
     <script src="./assets/js/blueprint.js"></script>
@@ -302,7 +324,7 @@
         var draw_new_image = false;
         var backgroundColor = 0x061822;
         var planeColor = 0xf7f9fb;
-        var cubeGaps = 1.05;
+        var cubeGaps = 1.02;
         var color_slider_val = 0xffffff;
         var color_picker_val = 0xffffff;
         var edit_mode_remove_cube = false;
@@ -755,7 +777,6 @@
             var intersects = raycaster.intersectObjects(scene.children, true);
 
             for(var i = 0; i < intersects.length; i++) {
-                mouseEvent.preventDefault();
                 if (intersects[i].object.geometry.type == 'BoxGeometry') {
                     // console.log(mouseEvent);
                     // console.log(intersects[i]);
@@ -798,19 +819,22 @@
                             break;
                     }
 
-                    // console.log('x: ' + delta_x + ' y: ' + delta_y + ' z: ' + delta_z);
                     var object_x = intersects[i].object.position.x;
                     var object_y = intersects[i].object.position.y;
                     var object_z = intersects[i].object.position.z;
+                    // console.log('x: ' + Math.abs(int_x - object_x) + ' y: ' +  Math.abs(int_y - object_y) + ' z: ' + Math.abs(int_z - object_z));
 
                     // Right Click
                     if (mouseEvent.button != 2) {
-                        if (edit_mode_remove_cube)
+                        if (edit_mode_remove_cube) {
                             removeCube(intersects[i].object, 0.5);
-                        else 
+                        }
+                        else {
                             drawRawCube(object_x+(delta_x*cubeGaps),object_y+(delta_y*cubeGaps),object_z+(delta_z*cubeGaps),color_picker_val);
+                        }
                     }
                 }
+                mouseEvent.preventDefault();
                 break;
             }
         }
@@ -830,7 +854,6 @@
         window.addEventListener('mousedown', onMouseDown);
         window.addEventListener('pointerdown', onMouseDown);
         window.addEventListener('pointerup', onMouseUp);
-        window.addEventListener('mouseup', onMouseUp);
         window.addEventListener('mousemove', onMouseMove);
         window.addEventListener('resize', onWindowResize);
         window.addEventListener('contextmenu', function(evt) { evt.preventDefault(); }, false);
